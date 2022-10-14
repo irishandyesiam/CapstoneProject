@@ -1,9 +1,9 @@
 
 from django.db import models
 from user.models import User
-from recipes.models import Recipe
+from favorite_recipe.models import Favorite
 
 # Create your models here.
 class MealPlan(models.Model):
-    recipe_name = models.ForeignKey(Recipe, on_delete=models.CASCADE)
-    user_name = models.ForeignKey(User, on_delete=models.CASCADE)
+    recipe = models.ForeignKey(Favorite, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
