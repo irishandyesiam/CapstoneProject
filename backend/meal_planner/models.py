@@ -1,4 +1,4 @@
-from ast import Delete
+
 from django.db import models
 from user.models import User
 from recipes.models import Recipe
