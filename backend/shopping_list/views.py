@@ -15,7 +15,6 @@ def shopping_list(request, user_id):
     elif request.method == 'POST':
         serializer = ShoppingListSerializer(data=request.data)
         if serializer.is_valid():
-            # user or user_id???
             serializer.save(user = request.user)
             return Response(serializer.data, status=status.HTTP_202_ACCEPTED) 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
