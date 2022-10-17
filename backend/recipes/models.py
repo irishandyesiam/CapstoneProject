@@ -8,4 +8,4 @@ class Recipe(models.Model):
     servings = models.IntegerField()
     image = models.CharField(max_length=2048)
 
-    objects = models.Manager()
+  

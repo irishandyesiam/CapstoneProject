@@ -21,7 +21,7 @@ urlpatterns = [
     path('api/auth/', include('authentication.urls')),
     path('api/cars/', include('cars.urls')),
     path('api/recipes/', include('recipes.urls')),
-    path('api/user/', include('user.urls')),
     path('api/meal_planner/', include('meal_planner.urls')),
     path('api/favorite_recipe/', include('favorite_recipe.urls')),
+    path('api/shopping_list/', include('shopping_list.urls')),
 ]
