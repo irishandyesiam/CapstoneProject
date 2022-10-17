@@ -1,12 +1,21 @@
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
-from .serializer import MealPlanSerializer
-from .models import MealPlan
+from rest_framework.decorators import api_view, permission_classes;
+from rest_framework.response import Response;
+from .serializer import MealPlanSerializer;
+from .models import MealPlan;
+from rest_framework.permissions import IsAuthenticated;
+from rest_framework import status;
 
 
-@api_view(['GET'])
-def meal_planner_list(request):
+@api_view(['GET', 'POST'])
+@permission_classes([IsAuthenticated])
+def mealplans_list(request, user_id):
     if request.method == 'GET':
-        meal_plans = MealPlan.objects.all()
-    serializer = MealPlanSerializer(meal_plans, many=True)
-    return Response(serializer.data)
+        user_list = MealPlan.objects.filter(user_id=user_id)
+        serializer = MealPlanSerializer(user_list, many=True)
+        return Response(serializer.data)
+    elif request.method == 'POST':
+        serializer = MealPlanSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save(user = request.user)
+            return Response(serializer.data, status=status.HTTP_202_ACCEPTED) 
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

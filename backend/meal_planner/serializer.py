@@ -4,5 +4,7 @@ from .models import MealPlan
 class MealPlanSerializer(serializers.ModelSerializer):
     class Meta:
         model = MealPlan
-        fields = ['id', 'recipe', 'user']
+        fields = ['id', 'recipe', 'user', 'recipe_id']
         depth = 1
+
+    recipe_id = serializers.IntegerField(write_only=True)
