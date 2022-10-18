@@ -12,9 +12,13 @@ const Navbar = () => {
       <ul>
         <li className="brand">
           <Link to="/" style={{ textDecoration: "none", color: "white" }}>
-            <b>React/Django JWT</b>
+            <b>Recipe Generator/Capstone Project</b>
           </Link>
         </li>
+        {/* link to Meal Plan page */}
+        <li>My Meal Plan</li>
+        {/* line to Shopping List page */}
+        <li>My Shopping List</li>
         <li>
           {user ? (
             <button onClick={logoutUser}>Logout</button>
