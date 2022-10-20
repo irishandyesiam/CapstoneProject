@@ -7,4 +7,4 @@ from favorite_recipe.models import Favorite
 class MealPlan(models.Model):
     recipe = models.ForeignKey(Favorite, on_delete=models.CASCADE, null=True, blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
-    day_week = models.CharField(max_length = 255)
+    day_week = models.CharField(max_length = 255, null=True)

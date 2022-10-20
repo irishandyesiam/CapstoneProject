@@ -14,25 +14,26 @@ const RecipeDisplay = (props) => {
     // Create POST request to Recipe database
     //POST To mealplan
     //Loop through ingrdients and POST each ingredient to shopping list
+    let name = recipe.name;
     let ingredients = JSON.stringify(recipe.ingredients);
-    console.log(ingredients);
+    
     let instructions = JSON.stringify(recipe.instructions);
-    console.log(instructions);
+    
+    // debugger
     try {
       let response = await axios.post(
-        "http://127.0.0.1:8000/api/meal_planner",
+        `http://127.0.0.1:8000/api/recipes/${user.id}/`,
+        name, ingredients, instructions,
         {
           headers: {
-            Authorization: "Bearer" + token,
-          },
-        },
-        recipe
+            Authorization: "Bearer " + token,
+          }
+        }
       );
 
       if (response.status === 201) {
         console.log(recipe);
       }
-
     } catch (error) {
       console.log(error.response.data);
     }
@@ -58,7 +59,7 @@ const RecipeDisplay = (props) => {
         <li>{props.passed_recipe.instructions}</li>
         <li>{props.passed_recipe.servings}</li>
         <button type="submit" onClick={() => addRecipe(props.passed_recipe)}>
-          Add to Meal Plan
+          Add to Recipe List
         </button>
         <button type="submit">Add to Favorite</button>
       </div>

@@ -13,7 +13,7 @@ import RecipeDisplayPage from "./pages/RecipeDisplayPage/RecipeDisplayPage";
 import Navbar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
 import SearchBar from "./components/SearchBar/SearchBar";
-import SearchResultsDisplay from "./components/SearchResultsDisplay/SearchResultsDisplay";
+import SearchResultsDisplay from "./pages/SearchResultsDisplay/SearchResultsDisplay";
 
 // Util Imports
 import PrivateRoute from "./utils/PrivateRoute";
@@ -67,7 +67,7 @@ function App() {
     <div>
       <Navbar />
       <SearchBar submittedSearchTerm={submittedSearchTerm}/>
-      <SearchResultsDisplay passedRecipe={passedRecipe} recipes={recipes}/>
+      
       <Routes>
         <Route
           path="/"
@@ -80,8 +80,9 @@ function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/display_recipe" element={<RecipeDisplayPage passed_recipe={passed_recipe}/>} />
+        <Route path="/search_results_display" element={<SearchResultsDisplay passedRecipe={passedRecipe} recipes={recipes}/>} />
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
