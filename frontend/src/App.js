@@ -7,7 +7,7 @@ import axios from "axios";
 import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
-import RecipeDisplayPage from "./pages/RecipeDisplayPage/RecipeDisplay";
+import RecipeDisplayPage from "./pages/RecipeDisplayPage/RecipeDisplayPage";
 
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
@@ -22,6 +22,7 @@ import { useEffect, useState } from "react";
 function App() {
 
   const [recipes, setRecipes] = useState([]);
+  const [passed_recipe, setPassedRecipe] = useState([]);
 
   useEffect(() => {
     getSuggestedRecipes();
@@ -54,13 +55,19 @@ function App() {
     } catch(error){
       console.log(`ERROR in submittedSearchTerm EXCEPTION: ${error}`);
     }
-  }
+  };
+
+  function passedRecipe(recipe){
+    console.log("FUNCTION IN APP.JS THAT RECIEVES RECIPE: ", recipe)
+    let response = recipe
+    setPassedRecipe(response)
+  };
 
   return (
     <div>
       <Navbar />
       <SearchBar submittedSearchTerm={submittedSearchTerm}/>
-      <SearchResultsDisplay recipes={recipes}/>
+      <SearchResultsDisplay passedRecipe={passedRecipe} recipes={recipes}/>
       <Routes>
         <Route
           path="/"
@@ -72,7 +79,7 @@ function App() {
         />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/display_recipe" element={RecipeDisplayPage />} />
+        <Route path="/display_recipe" element={<RecipeDisplayPage passed_recipe={passed_recipe}/>} />
       </Routes>
       <Footer />
     </div>
