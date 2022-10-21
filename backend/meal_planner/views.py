@@ -10,7 +10,7 @@ from rest_framework import status;
 @permission_classes([IsAuthenticated])
 def mealplans_list(request):
     if request.method == 'GET':
-        user_list = MealPlan.objects.filter(user_id=request.user_id)
+        user_list = MealPlan.objects.filter(user_id=request.user.id)
         serializer = MealPlanSerializer(user_list, many=True)
         return Response(serializer.data)
     elif request.method == 'POST':

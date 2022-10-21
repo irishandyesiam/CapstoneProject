@@ -31,11 +31,11 @@ const HomePage = () => {
   }, [token]);
   return (
     <div className="container">
-      <h1>Home Page for {user.username}!</h1>
+      <h1>Recipes for {user.username}!</h1>
       {recipes &&
         recipes.map((recipes) => (
           <p key={recipes.id}>
-            {recipes.recipe_name} {recipes.ingredients} {recipes.instructions} {recipes.time} {recipes.servings} {recipes.image}
+            {recipes.name} {/*onclick to go to display recipe details*/}
           </p>
         ))}
     </div>

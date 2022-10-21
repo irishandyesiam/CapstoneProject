@@ -8,6 +8,7 @@ import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import RecipeDisplayPage from "./pages/RecipeDisplayPage/RecipeDisplayPage";
+import MealPlan from "./pages/MealPlanPage/MealPlan";
 
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
@@ -63,6 +64,7 @@ function App() {
     setPassedRecipe(response)
   };
 
+  
   return (
     <div>
       <Navbar />
@@ -81,6 +83,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/display_recipe" element={<PrivateRoute><RecipeDisplayPage passed_recipe={passed_recipe}/></PrivateRoute>} />
         <Route path="/search_results_display" element={<SearchResultsDisplay passedRecipe={passedRecipe} recipes={recipes}/>} />
+        <Route path="/meal_planner" element={<PrivateRoute><MealPlan /></PrivateRoute>} />
       </Routes>
       {/* <Footer /> */}
     </div>

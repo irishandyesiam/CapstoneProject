@@ -9,16 +9,22 @@ const RecipeDisplay = (props) => {
 
   const [user, token] = useAuth();
 
-  async function addToMealPlan(recipe) {
+  async function addToMealPlan(recipeId) {
+    console.log(recipeId)
+    let recipe_meal_plan = {
+      day_week: "Monday",
+      recipe_id: recipeId
+  }
+
     try {
-      let response =await axios.post(`http://127.0.0.1:8000/api/meal_planner/`, recipe.name,
+      let response =await axios.post(`http://127.0.0.1:8000/api/meal_planner/`, recipe_meal_plan,
       {
         headers:{
           Authorization: "Bearer " + token,
         }
       });
       if (response.status === 201) {
-        console.log(recipe);
+        console.log(recipe_meal_plan);
       }
       } catch (error) {
         console.log(error.response.data)
@@ -52,13 +58,15 @@ const RecipeDisplay = (props) => {
         }
       );
 
-      if (response.status === 201) {
+      if (response.status === 202) {
         console.log(recipe);
+      debugger
+      addToMealPlan(response.data.id);
+
       }
     } catch (error) {
       console.log(error.response.data);
     }
-    addToMealPlan();
   }
   
 
@@ -83,7 +91,7 @@ const RecipeDisplay = (props) => {
         <li>{props.passed_recipe.instructions}</li>
         <li>{props.passed_recipe.servings}</li>
         <button type="submit" onClick={() => addRecipe(props.passed_recipe)}>
-          Add to Recipe List
+          Add to Meal Plan
         </button>
         <button type="submit">Add to Favorite</button>
       </div>
