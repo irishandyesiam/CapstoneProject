@@ -9,43 +9,72 @@ const RecipeDisplay = (props) => {
 
   const [user, token] = useAuth();
 
-  async function addToMealPlan(recipeId) {
-    console.log(recipeId)
-    let recipe_meal_plan = {
-      day_week: "Monday",
-      recipe_id: recipeId
+  async function ingredientsList(recipe) {
+    console.log("Ingredients List", recipe);
+     recipe.ingredients.map(async (el) => {
+      try {
+        let response = await axios.post(
+          `http://127.0.0.1:8000/api/shopping_list/`,
+          {
+            items: el,
+          },
+          {
+            headers: {
+              Authorization: "Bearer " + token,
+            },
+          }
+        );
+       
+      } catch (error) {
+        console.log(error.response.data);
+      }
+    });
+    
   }
 
+  async function addToMealPlan(recipeId) {
+    console.log(recipeId);
+    let recipe_meal_plan = {
+      day_week: "Monday",
+      recipe_id: recipeId,
+    };
+
     try {
-      let response =await axios.post(`http://127.0.0.1:8000/api/meal_planner/`, recipe_meal_plan,
-      {
-        headers:{
-          Authorization: "Bearer " + token,
+      let response = await axios.post(
+        `http://127.0.0.1:8000/api/meal_planner/`,
+        recipe_meal_plan,
+        {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
         }
-      });
+      );
       if (response.status === 201) {
         console.log(recipe_meal_plan);
       }
-      } catch (error) {
-        console.log(error.response.data)
-      }
+    } catch (error) {
+      console.log(error.response.data);
     }
+  }
 
   async function addRecipe(recipe) {
     console.log(recipe);
-    
+
     //POST To mealplan
     //Loop through ingrdients and POST each ingredient to shopping list
     let name = recipe.name;
     let ingredients = JSON.stringify(recipe.ingredients);
-    
+
     let instructions = JSON.stringify(recipe.instructions);
-    let image = recipe.image
-    
+    let image = recipe.image;
+
     let revisedRecipe = {
-      name, ingredients, instructions, image
-    }
-    
+      name,
+      ingredients,
+      instructions,
+      image,
+    };
+
     // debugger
     try {
       let response = await axios.post(
@@ -54,22 +83,19 @@ const RecipeDisplay = (props) => {
         {
           headers: {
             Authorization: "Bearer " + token,
-          }
+          },
         }
       );
 
       if (response.status === 202) {
         console.log(recipe);
-      debugger
-      addToMealPlan(response.data.id);
-
+        debugger;
+        addToMealPlan(response.data.id);
       }
     } catch (error) {
       console.log(error.response.data);
     }
   }
-  
-
 
   return (
     <div class="img-gallery">
@@ -92,6 +118,12 @@ const RecipeDisplay = (props) => {
         <li>{props.passed_recipe.servings}</li>
         <button type="submit" onClick={() => addRecipe(props.passed_recipe)}>
           Add to Meal Plan
+        </button>
+        <button
+          type="submit"
+          onClick={() => ingredientsList(props.passed_recipe)}
+        >
+          Add Ingredients to Shopping List
         </button>
         <button type="submit">Add to Favorite</button>
       </div>

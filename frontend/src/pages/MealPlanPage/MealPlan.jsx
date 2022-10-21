@@ -27,7 +27,7 @@ const MealPlan = () => {
     };
     fetchMealPlan();
   }, [token]);
-
+//create function to loop over ingredients to add to shopping list.//
   return (
     <div className="container">
       <h1>{user.username} Meal Plan</h1>
