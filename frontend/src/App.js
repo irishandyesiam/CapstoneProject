@@ -79,7 +79,7 @@ function App() {
         />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/display_recipe" element={<RecipeDisplayPage passed_recipe={passed_recipe}/>} />
+        <Route path="/display_recipe" element={<PrivateRoute><RecipeDisplayPage passed_recipe={passed_recipe}/></PrivateRoute>} />
         <Route path="/search_results_display" element={<SearchResultsDisplay passedRecipe={passedRecipe} recipes={recipes}/>} />
       </Routes>
       {/* <Footer /> */}

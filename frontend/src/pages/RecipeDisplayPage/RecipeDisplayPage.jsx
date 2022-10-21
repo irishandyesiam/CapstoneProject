@@ -9,21 +9,42 @@ const RecipeDisplay = (props) => {
 
   const [user, token] = useAuth();
 
+  async function addToMealPlan(recipe) {
+    try {
+      let response =await axios.post(`http://127.0.0.1:8000/api/meal_planner/`, recipe.name,
+      {
+        headers:{
+          Authorization: "Bearer " + token,
+        }
+      });
+      if (response.status === 201) {
+        console.log(recipe);
+      }
+      } catch (error) {
+        console.log(error.response.data)
+      }
+    }
+
   async function addRecipe(recipe) {
     console.log(recipe);
-    // Create POST request to Recipe database
+    
     //POST To mealplan
     //Loop through ingrdients and POST each ingredient to shopping list
     let name = recipe.name;
     let ingredients = JSON.stringify(recipe.ingredients);
     
     let instructions = JSON.stringify(recipe.instructions);
+    let image = recipe.image
+    
+    let revisedRecipe = {
+      name, ingredients, instructions, image
+    }
     
     // debugger
     try {
       let response = await axios.post(
-        `http://127.0.0.1:8000/api/recipes/${user.id}/`,
-        name, ingredients, instructions,
+        `http://127.0.0.1:8000/api/recipes/recipe-detail/`,
+        revisedRecipe,
         {
           headers: {
             Authorization: "Bearer " + token,
@@ -37,7 +58,10 @@ const RecipeDisplay = (props) => {
     } catch (error) {
       console.log(error.response.data);
     }
+    addToMealPlan();
   }
+  
+
 
   return (
     <div class="img-gallery">

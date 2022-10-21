@@ -15,9 +15,9 @@ def recipe_list(request):
 
 @api_view(['GET', 'POST'])
 @permission_classes([IsAuthenticated])
-def addToRecipeList(request, user_id):
+def addToRecipeList(request):
     if request.method == 'GET':
-        user_list = Recipe.objects.filter(user_id=user_id)
+        user_list = Recipe.objects.filter(user_id=request.user.id)
         serializer = RecipeSerializer(user_list, many=True)
         return Response(serializer.data)
     elif request.method == 'POST':
