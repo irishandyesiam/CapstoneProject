@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 const SearchResultsDisplay = (props) => {
   console.log(props.recipes);
-
+  console.log(props.ingredient_search.results);
   let navigate = useNavigate();
 
   const [recipe_index, setRecipeIndex] = useState('')
@@ -28,6 +28,7 @@ const SearchResultsDisplay = (props) => {
         );
       })}
     </div>
+    
   );
 };
 

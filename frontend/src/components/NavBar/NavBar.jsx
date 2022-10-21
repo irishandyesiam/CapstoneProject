@@ -18,7 +18,7 @@ const Navbar = () => {
         {/* link to Meal Plan page */}
         <Link to="meal_planner/">My Meal Plan</Link>
         {/* line to Shopping List page */}
-        <li>My Shopping List</li>
+        <Link to="shopping_list/">My Shopping List</Link>
         <li>
           {user ? (
             <button onClick={logoutUser}>Logout</button>
