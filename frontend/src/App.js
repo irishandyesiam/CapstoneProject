@@ -10,6 +10,7 @@ import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import RecipeDisplayPage from "./pages/RecipeDisplayPage/RecipeDisplayPage";
 import MealPlan from "./pages/MealPlanPage/MealPlan";
 import ShoppingList from "./pages/ShoppingList/ShoppingList";
+import InspirePage from "./pages/InspirePage/InspirePage";
 
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
@@ -24,8 +25,10 @@ import { useEffect, useState } from "react";
 function App() {
 
   const [recipes, setRecipes] = useState([]);
-  const [passed_recipe, setPassedRecipe] = useState([]);
+  const [dish_search, setDishes] = useState ([]);
+  const [passed_dish_recipe, setPassedDishRecipe] = useState([]);
   const [ingredient_search, setIngredientSearch] = useState([]);
+  const [passed_ing_recipe, setPassedIngredientRecipe] = useState([]);
 
   useEffect(() => {
     getSuggestedRecipes();
@@ -57,7 +60,7 @@ function App() {
       }
         });
         console.log(response.data)
-        setIngredientSearch(response.data);
+        setIngredientSearch(response.data.results);
     } catch(error){
       console.log(`ERROR in submittedSearchTerm EXCEPTION: ${error}`);
     }
@@ -72,19 +75,22 @@ function App() {
           'X-RapidAPI-Host': 'recipesapi2.p.rapidapi.com'
         }
         });
-        setRecipes(response.data.data);
+        setDishes(response.data.data);
     } catch(error){
       console.log(`ERROR in submittedSearchTerm EXCEPTION: ${error}`);
     }
   };
 
-  function passedRecipe(recipe){
+  function passedDishRecipe(recipe){
     console.log("FUNCTION IN APP.JS THAT RECIEVES RECIPE: ", recipe)
     let response = recipe
-    setPassedRecipe(response)
+    setPassedDishRecipe(response)
   };
 
-  
+  function passedIngredientRecipe(ing_recipe){
+    let response = ing_recipe
+    setPassedIngredientRecipe(response)
+  };
   return (
     <div>
       <Navbar />
@@ -101,8 +107,9 @@ function App() {
         />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/display_recipe" element={<PrivateRoute><RecipeDisplayPage passed_recipe={passed_recipe}/></PrivateRoute>} />
-        <Route path="/search_results_display" element={<SearchResultsDisplay passedRecipe={passedRecipe} recipes={recipes} ingredient_search={ingredient_search}/>} />
+        <Route path="/display_recipe" element={<PrivateRoute><RecipeDisplayPage passed_dish_recipe={passed_dish_recipe}  /></PrivateRoute>} />
+        <Route path="/inspire" element={<PrivateRoute><InspirePage passed_ing_recipe={passed_ing_recipe} ingredient_search={ingredient_search} /></PrivateRoute>} />
+        <Route path="/search_results_display" element={<SearchResultsDisplay passedIngredientRecipe={passedIngredientRecipe} passedDishRecipe={passedDishRecipe} dish_search={dish_search} ingredient_search={ingredient_search}/>} />
         <Route path="/meal_planner" element={<PrivateRoute><MealPlan /></PrivateRoute>} />
         <Route path="/shopping_list" element={<PrivateRoute><ShoppingList /></PrivateRoute>} />
       </Routes>

@@ -3,32 +3,31 @@ import './SearchResultsDisplay.css'
 import { useNavigate } from 'react-router-dom';
 
 const SearchResultsDisplay = (props) => {
-  console.log(props.recipes);
-  console.log(props.ingredient_search.results);
+  console.log(props.dish_search);
+ 
   let navigate = useNavigate();
 
-  const [recipe_index, setRecipeIndex] = useState('')
 
-  function handleOnClick(recipe) {
+
+  function handleDishOnClick(recipe) {
     console.log(recipe)
- 
-    // event.preventDefault();
-    props.passedRecipe(recipe)
+    props.passedDishRecipe(recipe)
     navigate('/display_recipe')
   }
 
+
+
   return (
     <div class="img-gallery">
-      {props.recipes.map((el, index) => {
+      {props.dish_search.map((el, index) => {
         return (
           <div className="img-box">
-            <img className="img" key={index} src={el.image} alt={"unavailable"} onClick={() => handleOnClick(el)}/>
+            <img className="img" key={index} src={el.image} alt={"unavailable"} onClick={() => handleDishOnClick(el)} />
             <h3 className="name">{el.name}</h3>
           </div>
         );
-      })}
-    </div>
-    
+      })};
+      </div>
   );
 };
 

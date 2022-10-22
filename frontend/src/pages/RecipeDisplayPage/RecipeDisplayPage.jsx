@@ -102,26 +102,26 @@ const RecipeDisplay = (props) => {
       <div className="img-box">
         <img
           className="img"
-          src={props.passed_recipe.image}
+          src={props.passed_dish_recipe.image}
           alt={"unavailable"}
         />
-        <h3 className="name">{props.passed_recipe.name}</h3>
-        {props.passed_recipe.ingredients &&
-          props.passed_recipe.ingredients.map((el) => {
+        <h3 className="name">{props.passed_dish_recipe.name}</h3>
+        {props.passed_dish_recipe.ingredients &&
+          props.passed_dish_recipe.ingredients.map((el) => {
             return (
               <ul>
                 <li>{el}</li>
               </ul>
             );
           })}
-        <li>{props.passed_recipe.instructions}</li>
-        <li>{props.passed_recipe.servings}</li>
-        <button type="submit" onClick={() => addRecipe(props.passed_recipe)}>
+        <li>{props.passed_dish_recipe.instructions}</li>
+        <li>{props.passed_dish_recipe.servings}</li>
+        <button type="submit" onClick={() => addRecipe(props.passed_dish_recipe)}>
           Add to Meal Plan
         </button>
         <button
           type="submit"
-          onClick={() => ingredientsList(props.passed_recipe)}
+          onClick={() => ingredientsList(props.passed_dish_recipe)}
         >
           Add Ingredients to Shopping List
         </button>
