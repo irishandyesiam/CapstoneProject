@@ -1,11 +1,12 @@
 import axios from "axios";
 import useAuth from "../../hooks/useAuth";
 import React from "react";
-import "./RecipeDisplayPage";
-import "./RecipeDisplayPage.css";
+import "./IngredientRecipePage";
+import "./IngredientRecipePage.css";
 
 const RecipeDisplay = (props) => {
-  console.log("Dish Recipes to display", props);
+  console.log("Ingredient Recipes to display", props);
+  console.log("Id number", props.passed_ing_recipe.id);
  
 
   const [user, token] = useAuth();
@@ -133,4 +134,3 @@ const RecipeDisplay = (props) => {
 };
 
 export default RecipeDisplay;
-

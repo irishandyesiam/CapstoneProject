@@ -28,7 +28,7 @@ const SearchBar = (props) => {
             <button type='submit' value="Search">Dish Search</button>
         </form><form className='searchbar' onSubmit={handleIngredientSubmit}>
                 <input type='text' value={ingredient_term} placeholder="...search by ingredient" onChange={(event) => setIngredientTerm(event.target.value)} />
-                <button type='submit' value="Search">"INSPIRE" Ingredient Search</button>
+                <button type='submit' value="Search">Ingredient Search</button>
             </form></>
     );
 }

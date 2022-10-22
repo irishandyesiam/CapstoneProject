@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 const SearchResultsDisplay = (props) => {
   console.log(props.dish_search);
  
+ 
   let navigate = useNavigate();
 
 
