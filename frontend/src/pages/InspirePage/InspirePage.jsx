@@ -9,9 +9,17 @@ const InspirePageDisplay = (props) => {
     
     let navigate = useNavigate();
 
+    function idNumberOnClick(ingredient_recipee) {
+      let ing_recipe_id = ingredient_recipee.id;
+      console.log(ing_recipe_id);
+      props.passedIdNumber(ing_recipe_id);
+    }
+
     function handleIngredientOnClick(ingredient_recipe) {
         props.passedIngredientRecipe(ingredient_recipe)
         navigate('/inspire_display')
+        console.log(ingredient_recipe)
+        idNumberOnClick(ingredient_recipe);
       }
 
 return (

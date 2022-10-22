@@ -1,4 +1,4 @@
-from turtle import Turtle
+
 from rest_framework.decorators import api_view, permission_classes;
 from rest_framework.response import Response;
 from .serializer import FavoriteSerializer;
@@ -10,9 +10,9 @@ from rest_framework import status
 
 @api_view(['GET', 'POST'])
 @permission_classes([IsAuthenticated])
-def favorites_list(request, user_id):
+def favorites_list(request):
     if request.method == 'GET':
-        user_list = Favorite.objects.filter(user_id=user_id)
+        user_list = Favorite.objects.filter(user_id=request.user.id)
         serializer = FavoriteSerializer(user_list, many=True)
         return Response(serializer.data)
     elif request.method == 'POST':

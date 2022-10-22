@@ -4,36 +4,13 @@ import React from "react";
 import "./IngredientRecipePage";
 import "./IngredientRecipePage.css";
 
-const RecipeDisplay = (props) => {
+
+const IngredientRecipeDisplay = (props) => {
   console.log("Ingredient Recipes to display", props);
-  console.log("Id number", props.passed_ing_recipe.id);
+  console.log("Ingredient image", props.passed_ing_recipe.thumbnail_url);
  
-
   const [user, token] = useAuth();
-
-  async function ingredientsList(recipe) {
-    console.log("Ingredients List", recipe);
-     recipe.ingredients.map(async (el) => {
-      try {
-        let response = await axios.post(
-          `http://127.0.0.1:8000/api/shopping_list/`,
-          {
-            items: el,
-          },
-          {
-            headers: {
-              Authorization: "Bearer " + token,
-            },
-          }
-        );
-       
-      } catch (error) {
-        console.log(error.response.data);
-      }
-    });
-    
-  }
-
+ 
   async function addToMealPlan(recipeId) {
     console.log(recipeId);
     let recipe_meal_plan = {
@@ -64,16 +41,13 @@ const RecipeDisplay = (props) => {
 
     //POST To mealplan
     //Loop through ingrdients and POST each ingredient to shopping list
-    let name = recipe.name;
-    let ingredients = JSON.stringify(recipe.ingredients);
-
-    let instructions = JSON.stringify(recipe.instructions);
-    let image = recipe.image;
+    let name = recipe.passed_ing_recipe.name;
+    // let instructions = JSON.stringify(recipe.instructions);
+    let image = recipe.passed_ing_recipe.thumbnail_url;
 
     let revisedRecipe = {
       name,
-      ingredients,
-      instructions,
+    //   instructions,
       image,
     };
 
@@ -104,33 +78,28 @@ const RecipeDisplay = (props) => {
       <div className="img-box">
         <img
           className="img"
-          src={props.passed_dish_recipe.image}
+          src={props.passed_ing_recipe.thumbnail_url}
           alt={"unavailable"}
         />
-        <h3 className="name">{props.passed_dish_recipe.name}</h3>
-        {props.passed_dish_recipe.ingredients &&
+        <h3 className="name">{props.passed_ing_recipe.name}</h3>
+        {/* {props.passed_dish_recipe.ingredients &&
           props.passed_dish_recipe.ingredients.map((el) => {
             return (
               <ul>
                 <li>{el}</li>
               </ul>
             );
-          })}
-        <li>{props.passed_dish_recipe.instructions}</li>
-        <li>{props.passed_dish_recipe.servings}</li>
+          })} */}
+        {/* <li>{props.passed_dish_recipe.instructions}</li> */}
+        {/* <li>{props.passed_dish_recipe.servings}</li> */}
         <button type="submit" onClick={() => addRecipe(props.passed_dish_recipe)}>
           Add to Meal Plan
         </button>
-        <button
-          type="submit"
-          onClick={() => ingredientsList(props.passed_dish_recipe)}
-        >
-          Add Ingredients to Shopping List
-        </button>
+
         <button type="submit">Add to Favorite</button>
       </div>
     </div>
   );
 };
 
-export default RecipeDisplay;
+export default IngredientRecipeDisplay;

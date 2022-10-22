@@ -60,12 +60,8 @@ const RecipeDisplay = (props) => {
 
   async function addRecipe(recipe) {
     console.log(recipe);
-
-    //POST To mealplan
-    //Loop through ingrdients and POST each ingredient to shopping list
     let name = recipe.name;
     let ingredients = JSON.stringify(recipe.ingredients);
-
     let instructions = JSON.stringify(recipe.instructions);
     let image = recipe.image;
 
@@ -76,7 +72,7 @@ const RecipeDisplay = (props) => {
       image,
     };
 
-    // debugger
+  
     try {
       let response = await axios.post(
         `http://127.0.0.1:8000/api/recipes/recipe-detail/`,
@@ -89,9 +85,44 @@ const RecipeDisplay = (props) => {
       );
 
       if (response.status === 202) {
-        console.log(recipe);
-        debugger;
+        console.log(response.data);
         addToMealPlan(response.data.id);
+      }
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  }
+
+  async function addToFavorites(favorite_recipe) {
+    console.log(favorite_recipe);
+    let recipe = favorite_recipe.name;
+    // Will need input from customer//
+    let rating = 5;
+    let comments = "Yum";
+    let user_id = user;
+
+    let favoriteContent = {
+      recipe,
+      rating,
+      comments,
+      user_id,
+    };
+
+  
+    try {
+      let response = await axios.post(
+        `http://127.0.0.1:8000/api/favorite_recipe/`,
+        favoriteContent,
+        {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        }
+      );
+
+      if (response.status === 202) {
+        console.log(response.data);
+        
       }
     } catch (error) {
       console.log(error.response.data);
@@ -126,7 +157,7 @@ const RecipeDisplay = (props) => {
         >
           Add Ingredients to Shopping List
         </button>
-        <button type="submit">Add to Favorite</button>
+        <button type="submit" onClick={() => addToFavorites(props.passed_dish_recipe)}>Add to Favorite</button>
       </div>
     </div>
   );
