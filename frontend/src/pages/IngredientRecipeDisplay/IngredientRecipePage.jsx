@@ -5,10 +5,11 @@ import "./IngredientRecipePage";
 import "./IngredientRecipePage.css";
 
 
-const IngredientRecipeDisplay = (props) => {
-  console.log("Ingredient Recipes to display", props);
-  console.log("Ingredient image", props.passed_ing_recipe.thumbnail_url);
-  console.log("Ingredients ???", props.passed_ing_recipe.sections)
+const IngredientRecipeDisplay = (recipe) => {
+  console.log("Ingredient Recipes to display", recipe);
+  console.log("Ingredient image", recipe.passed_ing_recipe.thumbnail_url);
+  console.log("Ingredients ???", recipe.passed_ing_recipe.sections[0].components);
+  console.log("Instructions ", recipe.passed_ing_recipe.instructions);
  
   const [user, token] = useAuth();
  
@@ -40,15 +41,16 @@ const IngredientRecipeDisplay = (props) => {
   async function addRecipe(recipe) {
     console.log(recipe);
 
-    //POST To mealplan
-    //Loop through ingrdients and POST each ingredient to shopping list
+  
     let name = recipe.passed_ing_recipe.name;
-    // let instructions = JSON.stringify(recipe.instructions);
+    let ingredients = recipe.passed_ing_recipe.sections[0].components
+    let instructions = recipe.passed_ing_recipe.instructions
     let image = recipe.passed_ing_recipe.thumbnail_url;
 
     let revisedRecipe = {
       name,
-    //   instructions,
+      ingredients,
+      instructions,
       image,
     };
 
@@ -65,8 +67,8 @@ const IngredientRecipeDisplay = (props) => {
       );
 
       if (response.status === 202) {
-        console.log(recipe);
-        debugger;
+        console.log(response.data);
+      
         addToMealPlan(response.data.id);
       }
     } catch (error) {
@@ -79,21 +81,32 @@ const IngredientRecipeDisplay = (props) => {
       <div className="img-box">
         <img
           className="img"
-          src={props.passed_ing_recipe.thumbnail_url}
+          src={recipe.passed_ing_recipe.thumbnail_url}
           alt={"unavailable"}
         />
-        <h3 className="name">{props.passed_ing_recipe.name}</h3>
-        {/* {props.passed_dish_recipe.ingredients &&
-          props.passed_dish_recipe.ingredients.map((el) => {
+        <h3 className="name">{recipe.passed_ing_recipe.name}</h3><br></br>
+        <p>Ingredients</p>
+        {recipe.passed_ing_recipe.sections[0].components &&
+          recipe.passed_ing_recipe.sections[0].components.map((el) => {
             return (
               <ul>
-                <li>{el}</li>
+                <li>{el.raw_text}</li>
               </ul>
-            );
-          })} */}
-        {/* <li>{props.passed_dish_recipe.instructions}</li> */}
-        {/* <li>{props.passed_dish_recipe.servings}</li> */}
-        <button type="submit" onClick={() => addRecipe(props.passed_dish_recipe)}>
+            )
+          })}<br></br>
+         <p>Instructions</p> 
+        {recipe.passed_ing_recipe.instructions && recipe.passed_ing_recipe.instructions.map((e) => {
+          return (
+            <ul>
+              <li>{e.display_text}</li>
+            </ul>
+          )
+        })
+
+        }
+        
+        {/* <li>{recipe.passed_dish_recipe.servings}</li> */}
+        <button type="submit" onClick={() => addRecipe(recipe.passed_dish_recipe)}>
           Add to Meal Plan
         </button>
 
