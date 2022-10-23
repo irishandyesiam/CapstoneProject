@@ -15,10 +15,9 @@ const Navbar = () => {
             <b>Recipe Generator/Capstone Project</b>
           </Link>
         </li>
-        {/* link to Meal Plan page */}
         <Link to="meal_planner/">My Meal Plan</Link>
-        {/* line to Shopping List page */}
         <Link to="shopping_list/">My Shopping List</Link>
+        <Link to="favorites/">Favorites</Link>
         <li>
           {user ? (
             <button onClick={logoutUser}>Logout</button>

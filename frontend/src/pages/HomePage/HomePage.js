@@ -34,8 +34,8 @@ const HomePage = () => {
       <h1>Recipes for {user.username}!</h1>
       {recipes &&
         recipes.map((recipes) => (
-          <p key={recipes.id}>
-            {recipes.name} {/*onclick to go to display recipe details*/}
+          <p key={recipes.id} >
+            {recipes.name} 
           </p>
         ))}
     </div>

@@ -8,6 +8,7 @@ import "./IngredientRecipePage.css";
 const IngredientRecipeDisplay = (props) => {
   console.log("Ingredient Recipes to display", props);
   console.log("Ingredient image", props.passed_ing_recipe.thumbnail_url);
+  console.log("Ingredients ???", props.passed_ing_recipe.sections)
  
   const [user, token] = useAuth();
  

@@ -12,6 +12,7 @@ import MealPlan from "./pages/MealPlanPage/MealPlan";
 import ShoppingList from "./pages/ShoppingList/ShoppingList";
 import InspirePage from "./pages/InspirePage/InspirePage";
 import IngredientRecipePage from "./pages/IngredientRecipeDisplay/IngredientRecipePage";
+import FavoritesPage from "./pages/FavoritesPage/FavoritesPage";
 
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
@@ -22,6 +23,7 @@ import SearchResultsDisplay from "./pages/SearchResultsDisplay/SearchResultsDisp
 // Util Imports
 import PrivateRoute from "./utils/PrivateRoute";
 import { useEffect, useState } from "react";
+import useAuth from "./hooks/useAuth";
 
 function App() {
 
@@ -31,22 +33,22 @@ function App() {
   const [ingredient_search, setIngredientSearch] = useState([]);
   const [passed_ing_recipe, setPassedIngredientRecipe] = useState([]);
   const [passed_ing_id, setPassedIngredientsId] = useState([]);
+  const [user, token] = useAuth();
 
 
   useEffect(() => {
-    getSuggestedRecipes();
+    getFavoriteRecipes();
   }, [])
 
-  async function getSuggestedRecipes(){
+  async function getFavoriteRecipes(){
     try{
-    let response = await axios.get(`https://recipesapi2.p.rapidapi.com/recipes/tomato%20soup`,{
-
-    headers: {
-      'X-RapidAPI-Key': '07710484e3msh42b10869d913fd2p1180a4jsn6142c9c0fe21',
-      'X-RapidAPI-Host': 'recipesapi2.p.rapidapi.com'
-    }
+    let response = await axios.get(`http://127.0.0.1:8000/api/favorite_recipe/`,{
+      headers: {
+        Authorization: "Bearer " + token,
+      },
     });
-    setRecipes(response.data.data);
+    setRecipes(response.data);
+    console.log(response.data)
     } catch(ex){
     console.log(`ERROR in getSuggestedRecipes EXCEPTION: ${ex}`);
     }
@@ -137,6 +139,7 @@ function App() {
         <Route path="/meal_planner" element={<PrivateRoute><MealPlan /></PrivateRoute>} />
         <Route path="/shopping_list" element={<PrivateRoute><ShoppingList /></PrivateRoute>} />
         <Route path="/inspire_display" element={<PrivateRoute><IngredientRecipePage passed_ing_recipe={passed_ing_recipe} /></PrivateRoute>} />
+        <Route path="/favorites" element={<PrivateRoute><FavoritesPage recipes={recipes} /></PrivateRoute>} />
       </Routes>
       {/* <Footer /> */}
     </div>
