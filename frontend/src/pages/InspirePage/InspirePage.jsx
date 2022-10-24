@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+
 import { useNavigate } from "react-router-dom";
 import './InspirePage.css';
 
@@ -29,8 +29,8 @@ return (
           return (
             <div className="img-box">
               <img className="img" key={index} src={el.thumbnail_url} alt={"unavailable"} onClick={() => handleIngredientOnClick(el)} />
-              <h3 className="name">{el.name}</h3>
-              <h3>{el.id}</h3>
+              <h3 className="name">{el.name}</h3><br></br>
+             
             </div>
           );
         })}

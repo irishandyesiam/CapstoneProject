@@ -25,8 +25,9 @@ const RecipeDisplay = (props) => {
             },
           }
         );
-       
+        console.log(response);
       } catch (error) {
+        
         console.log(error.response.data);
       }
     });
@@ -137,7 +138,8 @@ const RecipeDisplay = (props) => {
           src={props.passed_dish_recipe.image}
           alt={"unavailable"}
         />
-        <h3 className="name">{props.passed_dish_recipe.name}</h3>
+        <h1 className="name">{props.passed_dish_recipe.name}</h1><br></br>
+        <h2>Ingredients</h2>
         {props.passed_dish_recipe.ingredients &&
           props.passed_dish_recipe.ingredients.map((el) => {
             return (
@@ -146,8 +148,10 @@ const RecipeDisplay = (props) => {
               </ul>
             );
           })}
-        <li>{props.passed_dish_recipe.instructions}</li>
-        <li>{props.passed_dish_recipe.servings}</li>
+          <br></br>
+          <h2>Instructions</h2>
+        <p>{props.passed_dish_recipe.instructions}</p><br></br>
+      
         <button type="submit" onClick={() => addRecipe(props.passed_dish_recipe)}>
           Add to Meal Plan
         </button>
@@ -160,8 +164,8 @@ const RecipeDisplay = (props) => {
         <button type="submit" onClick={() => addToFavorites(props.passed_dish_recipe)}>Add to Favorite</button>
       </div>
     </div>
-  );
-};
+  )
+}
 
 export default RecipeDisplay;
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+
 import './SearchResultsDisplay.css'
 import { useNavigate } from 'react-router-dom';
 
@@ -26,10 +26,10 @@ const SearchResultsDisplay = (props) => {
             <img className="img" key={index} src={el.image} alt={"unavailable"} onClick={() => handleDishOnClick(el)} />
             <h3 className="name">{el.name}</h3>
           </div>
-        );
-      })};
+        )
+      })}
       </div>
-  );
-};
+  )
+}
 
 export default SearchResultsDisplay;

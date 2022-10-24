@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
+import AddItem from "../../components/AddItem/AddItem";
 
 
 import axios from "axios";
@@ -8,10 +9,17 @@ import axios from "axios";
 const ShoppingList = () => {
   const [user, token] = useAuth();
   const [recipes, setRecipes] = useState([]);
+  const [key] = useState([]);
+ 
   console.log(user)
   console.log(token)
+  console.log(recipes)
+  
 
   useEffect(() => {
+    fetchIngredients();
+  }, [token]);
+  
     const fetchIngredients = async () => {
       try {
         let response = await axios.get("http://127.0.0.1:8000/api/shopping_list/", {
@@ -21,19 +29,39 @@ const ShoppingList = () => {
         });
         setRecipes(response.data);
       } catch (error) {
-        console.log(error.response.data);
+        console.log(error.response);
       }
     };
-    fetchIngredients();
-  }, [token]);
+    
+  
+
+    async function addNewItem(newItem){
+      let response = await axios.post("http://127.0.0.1:8000/api/shopping_list/", newItem,  {headers: {
+          Authorization: "Bearer " + token,
+        }})
+      if(response.status === 201){
+          await fetchIngredients();
+      }
+  }
+
+    async function handleDelete(id) {
+      console.log(id)
+      let response = await axios.delete(`http://127.0.0.1:8000/api/shopping_list/edit_item/${id}/`,
+      {
+        headers: {
+          Authorization: "Bearer " + token,
+        }})
+        console.log(response.status)
+     
+    }
   return (
     <div className="container">
       <h1>Shopping list for {user.username}!</h1>
-      {/* input form for adding items to shopping list */}
+      <AddItem addNewItem={addNewItem}/>
       {recipes &&
-        recipes.map((recipes) => (
-          <p key={recipes.id}>
-            {recipes.items} {/*buttton onclick to delete item*/}
+        recipes.map((el) => (
+          <p key={el.id}>
+            {el.items} <button type='delete' onClick={() => handleDelete(el.id)}>Delete</button>
           </p>
         ))}
     </div>

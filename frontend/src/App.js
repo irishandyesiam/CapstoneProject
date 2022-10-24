@@ -93,6 +93,7 @@ function App() {
     console.log("Passed dish", search_term)
     try{
       let response = await axios.get(`https://recipesapi2.p.rapidapi.com/recipes/${search_term}/`,{
+        params: {maxRecipes: '5'},
         headers: {
           'X-RapidAPI-Key': '07710484e3msh42b10869d913fd2p1180a4jsn6142c9c0fe21',
           'X-RapidAPI-Host': 'recipesapi2.p.rapidapi.com'

@@ -11,7 +11,7 @@ const IngredientRecipeDisplay = (recipe) => {
   console.log("Ingredients ???", recipe.passed_ing_recipe.sections[0].components);
   console.log("Instructions ", recipe.passed_ing_recipe.instructions);
  
-  const [user, token] = useAuth();
+  const [token] = useAuth();
  
   async function addToMealPlan(recipeId) {
     console.log(recipeId);
@@ -85,7 +85,7 @@ const IngredientRecipeDisplay = (recipe) => {
           alt={"unavailable"}
         />
         <h3 className="name">{recipe.passed_ing_recipe.name}</h3><br></br>
-        <p>Ingredients</p>
+        <h2>Ingredients</h2>
         {recipe.passed_ing_recipe.sections[0].components &&
           recipe.passed_ing_recipe.sections[0].components.map((el) => {
             return (
@@ -94,7 +94,7 @@ const IngredientRecipeDisplay = (recipe) => {
               </ul>
             )
           })}<br></br>
-         <p>Instructions</p> 
+         <h2>Instructions</h2> 
         {recipe.passed_ing_recipe.instructions && recipe.passed_ing_recipe.instructions.map((e) => {
           return (
             <ul>
@@ -106,6 +106,7 @@ const IngredientRecipeDisplay = (recipe) => {
         }
         
         {/* <li>{recipe.passed_dish_recipe.servings}</li> */}
+        <br></br>
         <button type="submit" onClick={() => addRecipe(recipe.passed_dish_recipe)}>
           Add to Meal Plan
         </button>
