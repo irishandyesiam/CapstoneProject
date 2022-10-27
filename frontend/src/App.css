@@ -34,6 +34,9 @@ button:hover {
 }
 
 .container {
+  border-style: solid;
+  border-color: orange;
+  border-width: 2px;
   margin: 0 auto;
   max-width: 600px;
   overflow: auto;
@@ -55,4 +58,11 @@ button:hover {
   margin: 5px;
   padding: 3px 7px;
   font-size: 17px;
+}
+
+.searchbar_container {
+  column-count: 2;
+  border-style: solid;
+  border-color:red;
+  border-width: 5px;
 }

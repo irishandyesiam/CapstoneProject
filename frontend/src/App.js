@@ -121,8 +121,9 @@ function App() {
   return (
     <div>
       <Navbar />
+      <div className = "searchbar_container">
       <SearchBar submittedSearchTerm={submittedSearchTerm} submittedIngredientTerm={submittedIngredientTerm}/>
-      
+      </div>
       <Routes>
         <Route
           path="/"

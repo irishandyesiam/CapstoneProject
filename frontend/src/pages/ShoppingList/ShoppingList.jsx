@@ -44,9 +44,10 @@ const ShoppingList = () => {
       }
   }
 
-    async function handleDelete(id) {
-      console.log(id)
-      let response = await axios.delete(`http://127.0.0.1:8000/api/shopping_list/edit_item/${id}/`,
+    async function handleDelete(el) {
+      console.log(el.id)
+      let json_id = (el.id);
+      let response = await axios.delete(`http://127.0.0.1:8000/api/shopping_list/edit_item/${json_id}/`,
       {
         headers: {
           Authorization: "Bearer " + token,
@@ -61,7 +62,7 @@ const ShoppingList = () => {
       {recipes &&
         recipes.map((el) => (
           <p key={el.id}>
-            {el.items} <button type='delete' onClick={() => handleDelete(el.id)}>Delete</button>
+            {el.items} <button type='delete' onClick={() => handleDelete(el)}>Delete</button>
           </p>
         ))}
     </div>

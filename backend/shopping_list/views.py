@@ -6,7 +6,7 @@ from .serializers import ShoppingListSerializer;
 from .models import ShoppingList;
 from django.shortcuts import get_object_or_404;
 
-@api_view(['GET', 'POST', 'DELETE'])
+@api_view(['GET', 'POST'])
 @permission_classes([IsAuthenticated])
 def shopping_list(request):
     if request.method == 'GET':
