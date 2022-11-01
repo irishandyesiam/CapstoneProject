@@ -9,7 +9,8 @@ li {
 }
 
 .navBar {
-  background: steelblue;
+  background-color: #A5C7B7;
+  background-image: linear-gradient(to right, #A5C7B7,#5D4257 ) steelblue;
   box-shadow: 4px 2px 5px gray;
   color: white;
   margin-bottom: 2rem;
