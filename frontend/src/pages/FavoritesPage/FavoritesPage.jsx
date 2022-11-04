@@ -16,45 +16,54 @@ const DisplayFavorites = (props) => {
   
 
   useEffect(() => {
-    // submitNewComment();
+    addNewComment();
   }, []);
 
-  async function addNewComment(newComment){
-    let response = newComment
-    setNewComment(response)
-  } 
+  // async function addNewComment(newComment){
+  //   console.log(newComment)
+  //   let response = await axios.put(
+  //         "http://127.0.0.1:8000/api/favorite_recipe/comment/",
+  //         newComment,
+  //         {
+  //           headers: {
+  //             Authorization: "Bearer " + token,
+  //           },
+  //         }
+  //       )
+  //   console.log(response)
+  // } 
   
-  // async function submitNewComment(addedComment)
-  // {
-  //   console.log("testing", addedComment);
-  //   let recipe = props.recipes;
-  //   let rating = 2;
-  //   let comments = addedComment;
+  async function addNewComment(newComment)
+  {
+    console.log("testing", newComment);
+    let recipe = props.recipes;
+    let rating = 2;
+    let comments = newComment;
 
-  //   let putComment = {
-  //     recipe,
-  //     rating,
-  //     comments,
-  //   };
-  //   console.log(putComment);
+    let putComment = {
+      recipe,
+      rating,
+      comments,
+    };
+    console.log(putComment);
   
-  //   console.log("Put Comment", putComment);
-  //   try {
-  //     let response = await axios.post(
-  //       "http://127.0.0.1:8000/api/favorite_recipe/comment/",
-  //       putComment,
-  //       {
-  //         headers: {
-  //           Authorization: "Bearer " + token,
-  //         },
-  //       }
-  //     );
-  //     console.log(response.data);
-  //   } catch (error) {
-  //     console.log(error.response.data);
-  //   }
-  // }
-    return (
+    console.log("Post Comment", putComment);
+    try {
+      let response = await axios.put(
+        "http://127.0.0.1:8000/api/favorite_recipe/comment/",
+        addedComment,
+        {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        }
+      );
+      console.log(response.data);
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  }
+return (
       <div className="container">
         {props &&
           props.recipes.map((recipes) => (
@@ -66,6 +75,7 @@ const DisplayFavorites = (props) => {
           ))}
       </div>
     )
-  }
+  
+}
 
 export default DisplayFavorites;
