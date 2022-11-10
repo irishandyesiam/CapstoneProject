@@ -60,19 +60,19 @@ const IngredientRecipeDisplay = (recipe) => {
     console.log(image);
 
     let revisedRecipe = {
-      image,
-      ingredients,
-      instructions,
-      name,
+      image: image,
+      ingredients: ingredients,
+      instructions: instructions,
+      name: name,
     };
     console.log(revisedRecipe);
     // debugger
     try {
       let response = await axios.post(
         `http://127.0.0.1:8000/api/recipes/recipe-detail/`,
-        {
+       
         revisedRecipe,
-        },
+       
         {
           headers: {
             Authorization: `Bearer ${token}`,
