@@ -34,8 +34,8 @@ button:hover {
 }
 
 .container {
-  border-style: solid;
-  border-color: orange;
+  /* border-style: solid; */
+  /* border-color: orange; */
   border-width: 2px;
   margin: 0 auto;
   max-width: 600px;
@@ -62,7 +62,7 @@ button:hover {
 
 .searchbar_container {
   column-count: 2;
-  border-style: solid;
-  border-color:red;
+  /* border-style: solid;
+  border-color:red; */
   border-width: 5px;
 }

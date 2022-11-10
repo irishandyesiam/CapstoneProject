@@ -11,7 +11,7 @@ const IngredientRecipeDisplay = (recipe) => {
   console.log("Ingredients ???", recipe.passed_ing_recipe.sections[0].components);
   console.log("Instructions ", recipe.passed_ing_recipe.instructions);
  
-  const [token] = useAuth();
+  const [user, token] = useAuth();
  
   async function addToMealPlan(recipeId) {
     console.log(recipeId);
@@ -38,30 +38,44 @@ const IngredientRecipeDisplay = (recipe) => {
     }
   }
 
-  async function addRecipe(recipe) {
-    console.log(recipe);
+  async function addRecipe(add_recipe) {
+    console.log(add_recipe);
 
   
     let name = recipe.passed_ing_recipe.name;
-    let ingredients = recipe.passed_ing_recipe.sections[0].components
-    let instructions = recipe.passed_ing_recipe.instructions
+    console.log(name);
+    let ingredients_pull = recipe.passed_ing_recipe.sections[0].components.map((el) => {
+      return (el.ingredient.name)
+    });
+    console.log(ingredients_pull);
+    let ingredients = JSON.stringify(ingredients_pull);
+    console.log(ingredients);
+    let instructions_pull = recipe.passed_ing_recipe.instructions.map((e) => {
+      return (e.display_text)
+    });
+    console.log(instructions_pull);
+    let instructions = JSON.stringify(instructions_pull);
+    console.log(instructions);
     let image = recipe.passed_ing_recipe.thumbnail_url;
+    console.log(image);
 
     let revisedRecipe = {
-      name,
+      image,
       ingredients,
       instructions,
-      image,
+      name,
     };
-
+    console.log(revisedRecipe);
     // debugger
     try {
       let response = await axios.post(
         `http://127.0.0.1:8000/api/recipes/recipe-detail/`,
+        {
         revisedRecipe,
+        },
         {
           headers: {
-            Authorization: "Bearer " + token,
+            Authorization: `Bearer ${token}`,
           },
         }
       );
@@ -90,7 +104,7 @@ const IngredientRecipeDisplay = (recipe) => {
           recipe.passed_ing_recipe.sections[0].components.map((el) => {
             return (
               <ul>
-                <li>{el.raw_text}</li>
+                <li>{el.ingredient.name}</li>
               </ul>
             )
           })}<br></br>
@@ -107,7 +121,7 @@ const IngredientRecipeDisplay = (recipe) => {
         
         {/* <li>{recipe.passed_dish_recipe.servings}</li> */}
         <br></br>
-        <button type="submit" onClick={() => addRecipe(recipe.passed_dish_recipe)}>
+        <button type="submit" onClick={() => addRecipe(recipe.passed_ing_recipe)}>
           Add to Meal Plan
         </button>
 
