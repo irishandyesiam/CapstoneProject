@@ -45,7 +45,7 @@ const IngredientRecipeDisplay = (recipe) => {
     let name = recipe.passed_ing_recipe.name;
     console.log(name);
     let ingredients_pull = recipe.passed_ing_recipe.sections[0].components.map((el) => {
-      return (el.ingredient.name)
+      return (el.raw_text)
     });
     console.log(ingredients_pull);
     let ingredients = JSON.stringify(ingredients_pull);
@@ -90,6 +90,72 @@ const IngredientRecipeDisplay = (recipe) => {
     }
   }
 
+  async function addToFavorites(favorite_recipe) {
+    console.log(favorite_recipe);
+    let recipe = favorite_recipe.name;
+    console.log(favorite_recipe.name)
+    // Will need input from customer//
+    let rating = 5;
+    let comments = "Yum";
+    let user_id = user;
+
+    let favoriteContent = {
+      recipe,
+      rating,
+      comments,
+      user_id,
+    };
+
+  
+    try {
+      let response = await axios.post(
+        `http://127.0.0.1:8000/api/favorite_recipe/`,
+        favoriteContent,
+        {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        }
+      );
+
+      if (response.status === 202) {
+        console.log(response.data);
+        
+      }
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  }
+
+  async function ingredientsList(recipe) {
+    console.log("Ingredients List", recipe);
+    let x = recipe.sections[0].components.map((el) => {
+      return (el.ingredient.name)
+    });
+    console.log(x)
+    
+     x.map(async (el) => {
+      try {
+        let response = await axios.post(
+          `http://127.0.0.1:8000/api/shopping_list/`,
+          {
+            items: el,
+          },
+          {
+            headers: {
+              Authorization: "Bearer " + token,
+            },
+          }
+        );
+        console.log(response);
+      } catch (error) {
+        
+        console.log(error.response.data);
+      }
+    });
+    
+  }
+
   return (
     <div class="img-gallery">
       <div className="img-box">
@@ -104,7 +170,7 @@ const IngredientRecipeDisplay = (recipe) => {
           recipe.passed_ing_recipe.sections[0].components.map((el) => {
             return (
               <ul>
-                <li>{el.ingredient.name}</li>
+                <li>{el.raw_text}</li>
               </ul>
             )
           })}<br></br>
@@ -124,8 +190,13 @@ const IngredientRecipeDisplay = (recipe) => {
         <button type="submit" onClick={() => addRecipe(recipe.passed_ing_recipe)}>
           Add to Meal Plan
         </button>
-
-        <button type="submit">Add to Favorite</button>
+        <button
+          type="submit"
+          onClick={() => ingredientsList(recipe.passed_ing_recipe)}
+        >
+          Add Ingredients to Shopping List
+        </button>
+        <button type="submit" onClick={() => addToFavorites(recipe.passed_ing_recipe)}>Add to Favorite</button>
       </div>
     </div>
   );
