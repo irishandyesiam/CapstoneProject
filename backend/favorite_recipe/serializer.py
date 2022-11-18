@@ -7,4 +7,4 @@ class FavoriteSerializer(serializers.ModelSerializer):
         fields = ['id', 'user', 'recipe', 'rating', 'comments', 'user_id', 'recipe_id']
         depth = 1
 
-   
+    recipe_id = serializers.IntegerField(write_only=True)
