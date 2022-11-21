@@ -161,7 +161,7 @@ const RecipeDisplay = (props) => {
         >
           Add Ingredients to Shopping List
         </button>
-        <button type="submit" onClick={() => addToFavorites(props.passed_dish_recipe)}>Add to Favorite</button>
+       
       </div>
     </div>
   )

@@ -90,43 +90,7 @@ const IngredientRecipeDisplay = (recipe) => {
     }
   }
 
-  async function addToFavorites(favorite_recipe) {
-    console.log(favorite_recipe);
-    let recipe = favorite_recipe.name;
-    console.log(favorite_recipe.name)
-    // Will need input from customer//
-    let rating = 5;
-    let comments = "Yum";
-    let user_id = user;
-    let recipe_id = favorite_recipe.id;
 
-    let favoriteContent = {
-      recipe_id,
-      rating,
-      comments,
-      user_id,
-    };
-
-  
-    try {
-      let response = await axios.post(
-        `http://127.0.0.1:8000/api/favorite_recipe/`,
-        favoriteContent,
-        {
-          headers: {
-            Authorization: "Bearer " + token,
-          },
-        }
-      );
-
-      if (response.status === 202) {
-        console.log(response.data);
-        
-      }
-    } catch (error) {
-      console.log(error.response.data);
-    }
-  }
 
   async function ingredientsList(recipe) {
     console.log("Ingredients List", recipe);
@@ -197,7 +161,7 @@ const IngredientRecipeDisplay = (recipe) => {
         >
           Add Ingredients to Shopping List
         </button>
-        <button type="submit" onClick={() => addToFavorites(recipe.passed_ing_recipe)}>Add to Favorite</button>
+        
       </div>
     </div>
   );

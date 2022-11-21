@@ -67,8 +67,8 @@ return (
       <div className="container">
         {props &&
           props.recipes.map((recipes) => (
-            <p key={recipes.id}>
-              <li> {recipes.recipe} </li>
+            <p key={recipes.recipe.id}>
+              <li> {recipes.recipe.name} </li>
               <p> {recipes.comments} </p>
               <CommentsForm addNewComment={addNewComment} />
             </p>
