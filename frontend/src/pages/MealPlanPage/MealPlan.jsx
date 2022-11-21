@@ -27,12 +27,49 @@ const MealPlan = () => {
     };
     fetchMealPlan();
   }, [token]);
-//create function to loop over ingredients to add to shopping list.//
+
+    async function addToFavorites(favorite_recipe) {
+      console.log(favorite_recipe);
+      let recipe = favorite_recipe.recipe;
+      console.log(recipe)
+      // Will need input from customer//
+      let rating = 5;
+      let comments = "Yum";
+      let user_id = user;
+      let recipe_id = favorite_recipe.recipe.id;
+
+      let favoriteContent = {
+        recipe_id,
+        rating,
+        comments,
+        user_id,
+      };
+      try {
+        let response = await axios.post(
+          `http://127.0.0.1:8000/api/favorite_recipe/`,
+          favoriteContent,
+          {
+            headers: {
+              Authorization: "Bearer " + token,
+            },
+          }
+        );
+  
+        if (response.status === 202) {
+          console.log(response.data);
+          
+        }
+      } catch (error) {
+        console.log(error.response.data);
+      }
+    }
+
   return (
     <div className="container">
       <h1>{user.username} Meal Plan</h1>
       {recipes &&
-        recipes.map((recipes) => <p key={recipes.id}>{recipes.recipe.name}</p>)}
+        recipes.map((recipes) => <p key={recipes.id}>{recipes.recipe.name}<button type="submit" onClick={() => addToFavorites(recipes)}>Add to Favorite</button></p>)}
+        
     </div>
   );
 };

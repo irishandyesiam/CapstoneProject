@@ -10,7 +10,7 @@ const DisplayFavorites = (props) => {
   const [addedComment, setNewComment] = useState([]);
 
   console.log(props);
-  console.log(props.recipes);
+  console.log(props.recipe);
   console.log(addedComment);
 
   

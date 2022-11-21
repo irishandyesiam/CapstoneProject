@@ -98,9 +98,10 @@ const IngredientRecipeDisplay = (recipe) => {
     let rating = 5;
     let comments = "Yum";
     let user_id = user;
+    let recipe_id = favorite_recipe.id;
 
     let favoriteContent = {
-      recipe,
+      recipe_id,
       rating,
       comments,
       user_id,
