@@ -69,6 +69,11 @@ return (
           props.recipes.map((recipes) => (
             <p key={recipes.recipe.id}>
               <li> {recipes.recipe.name} </li>
+              <img
+                className="img"
+                src={recipes.recipe.image}
+                alt={"unavailable"}
+              />
               <p> {recipes.comments} </p>
               <CommentsForm addNewComment={addNewComment} />
             </p>
