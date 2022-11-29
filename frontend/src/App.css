@@ -33,7 +33,7 @@ button:hover {
   cursor: pointer;
   color: white;
   background-color: #A5C7B7;
-  box-shadow: 8px 0px 6px -6px rgba(0,0,0,0.24), 8px 0px 6px -6px rgba(0,0,0,0.19)
+  box-shadow: 10px 2px 4px -4px rgba(0,0,0,0.24);
 }
 
 .container {
