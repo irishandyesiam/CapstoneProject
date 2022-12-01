@@ -13,6 +13,7 @@ import ShoppingList from "./pages/ShoppingList/ShoppingList";
 import InspirePage from "./pages/InspirePage/InspirePage";
 import IngredientRecipePage from "./pages/IngredientRecipeDisplay/IngredientRecipePage";
 import FavoritesPage from "./pages/FavoritesPage/FavoritesPage";
+import FavoriteRecipeDisplay from "./pages/FavoriteRecipeDisplay/FavoriteRecipeDisplay";
 
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
@@ -142,6 +143,7 @@ function App() {
         <Route path="/shopping_list" element={<PrivateRoute><ShoppingList /></PrivateRoute>} />
         <Route path="/inspire_display" element={<PrivateRoute><IngredientRecipePage passed_ing_recipe={passed_ing_recipe} /></PrivateRoute>} />
         <Route path="/favorites" element={<PrivateRoute><FavoritesPage recipes={recipes} /></PrivateRoute>} />
+        <Route path="/favorite_recipe_display" element={<PrivateRoute><FavoriteRecipeDisplay/></PrivateRoute>}/>
       </Routes>
       {/* <Footer /> */}
     </div>
