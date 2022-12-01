@@ -4,6 +4,7 @@ import CommentsForm from "../../components/CommentsForm/CommentsForm";
 import useAuth from "../../hooks/useAuth";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const DisplayFavorites = (props) => {
   const [user, token] = useAuth();
@@ -63,12 +64,21 @@ const DisplayFavorites = (props) => {
       console.log(error.response.data);
     }
   }
+
+  let navigate = useNavigate();
+
+  function handleFavoriteId(fav_recipe) {
+    console.log(fav_recipe)
+    props.passedFavoriteId(fav_recipe)
+    navigate('/favorite_recipe_display/')
+  }
+
 return (
       <div className="container">
         {props &&
           props.recipes.map((recipes) => (
             <p key={recipes.recipe.id}>
-              <li> {recipes.recipe.name} </li>
+              <li onClick={() => handleFavoriteId(recipes)}> {recipes.recipe.name}  </li>
               <img
                 className="img"
                 src={recipes.recipe.image}

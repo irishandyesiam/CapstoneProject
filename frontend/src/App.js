@@ -29,6 +29,8 @@ import useAuth from "./hooks/useAuth";
 function App() {
 
   const [recipes, setRecipes] = useState([]);
+  // const [favorite_id, setFavoriteId] = useState([]);
+  const [favorite_recipe, setFavoriteRecipe] = useState([])
   const [dish_search, setDishes] = useState ([]);
   const [passed_dish_recipe, setPassedDishRecipe] = useState([]);
   const [ingredient_search, setIngredientSearch] = useState([]);
@@ -39,6 +41,7 @@ function App() {
 
   useEffect(() => {
     getFavoriteRecipes();
+    passedFavoriteId();
   }, [])
 
   async function getFavoriteRecipes(){
@@ -51,7 +54,22 @@ function App() {
     setRecipes(response.data);
     console.log(response.data)
     } catch(ex){
-    console.log(`ERROR in getSuggestedRecipes EXCEPTION: ${ex}`);
+    console.log(`ERROR in getFavoriteRecipes EXCEPTION: ${ex}`);
+    }
+  }
+
+  async function passedFavoriteId(fav_recipe){
+    console.log(fav_recipe.id)
+    try{
+    let response = await axios.get(`http://127.0.0.1:8000/api/favorite_recipe/${fav_recipe.id}/`,{
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    });
+    setFavoriteRecipe(response.data);
+    console.log(response.data)
+    } catch(ex){
+    console.log(`ERROR in passedFavoriteId EXCEPTION: ${ex}`);
     }
   }
 
@@ -118,6 +136,11 @@ function App() {
     setPassedIngredientRecipe(response)
   };
 
+  // function passedFavoriteId(fav_recipe){
+  //   console.log(fav_recipe.id)
+  //   let response = fav_recipe.id
+  //   setFavoriteId(response)
+  // };
 
   return (
     <div>
@@ -142,8 +165,8 @@ function App() {
         <Route path="/meal_planner" element={<PrivateRoute><MealPlan /></PrivateRoute>} />
         <Route path="/shopping_list" element={<PrivateRoute><ShoppingList /></PrivateRoute>} />
         <Route path="/inspire_display" element={<PrivateRoute><IngredientRecipePage passed_ing_recipe={passed_ing_recipe} /></PrivateRoute>} />
-        <Route path="/favorites" element={<PrivateRoute><FavoritesPage recipes={recipes} /></PrivateRoute>} />
-        <Route path="/favorite_recipe_display" element={<PrivateRoute><FavoriteRecipeDisplay/></PrivateRoute>}/>
+        <Route path="/favorites" element={<PrivateRoute><FavoritesPage recipes={recipes} passedFavoriteId={passedFavoriteId}/></PrivateRoute>} />
+        <Route path="/favorite_recipe_display" element={<PrivateRoute><FavoriteRecipeDisplay favorite_recipe={favorite_recipe} /></PrivateRoute>}/>
       </Routes>
       {/* <Footer /> */}
     </div>
