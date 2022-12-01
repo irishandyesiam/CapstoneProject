@@ -11,7 +11,7 @@ const DisplayFavorites = (props) => {
 
   console.log(props);
   console.log(props.recipe);
-  console.log(addedComment);
+  // console.log(addedComment);
 
   
 
