@@ -4,7 +4,7 @@ import useAuth from "../../hooks/useAuth";
 import axios from "axios";
 
 const FavoriteRecipeDisplay = (favorite_recipe) => {
-    console.log(favorite_recipe.favorite_recipe.recipe.image);
+    console.log(favorite_recipe.favorite_recipe.recipe);
     return (
       <div>
         <img
