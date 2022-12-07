@@ -30,7 +30,7 @@ function App() {
 
   const [recipes, setRecipes] = useState([]);
   // const [favorite_id, setFavoriteId] = useState([]);
-  const [favorite_recipe, setFavoriteRecipe] = useState([])
+  const [favorite_recipe, setFavoriteRecipe] = useState({})
   const [dish_search, setDishes] = useState ([]);
   const [passed_dish_recipe, setPassedDishRecipe] = useState([]);
   const [ingredient_search, setIngredientSearch] = useState([]);
