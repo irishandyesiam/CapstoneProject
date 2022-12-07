@@ -2,8 +2,47 @@ import React from "react";
 import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import axios from "axios";
+import CommentsForm from "../../components/CommentsForm/CommentsForm"
 
 const FavoriteRecipeDisplay = (favorite_recipe) => {
+  const [user, token] = useAuth();
+  const [addedComment, setNewComment] = useState([]);
+  useEffect(() => {
+    addNewComment();
+  }, []);
+  
+  async function addNewComment(newComment)
+  {
+    console.log("Input form comment", newComment);
+    
+    let recipe = favorite_recipe.favorite_recipe.recipe.id;
+    let rating = 5; 
+    let comments = newComment.comments;
+    console.log(newComment.comments)
+
+    let putComment = {
+      recipe_id: recipe,
+      rating: rating,
+      comments: comments,
+    };
+    console.log("Post Comment", putComment);
+
+    try {
+      let response = await axios.put(
+        `http://127.0.0.1:8000/api/favorite_recipe/${recipe}/`,
+        putComment,
+        {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        }
+      );
+        console.log(response.data);
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  }
+  
 
   return (
     <div>
@@ -15,6 +54,7 @@ const FavoriteRecipeDisplay = (favorite_recipe) => {
             alt={"unavailable"}
           />
           <h1>{favorite_recipe.favorite_recipe.recipe.name}</h1>
+          <p><CommentsForm addNewComment={addNewComment} /></p>
         </div>
       )}
     </div>

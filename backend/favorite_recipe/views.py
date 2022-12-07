@@ -23,19 +23,20 @@ def favorites_list(request):
             return Response(serializer.data, status=status.HTTP_202_ACCEPTED) 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-@api_view(['GET'])
+@api_view(['GET', 'PUT'])
 @permission_classes([IsAuthenticated])
 def favorites_detail(request, pk): 
     favorite = get_object_or_404(Favorite, pk=pk)
     if request.method == 'GET':
         serializer = FavoriteSerializer(favorite)
         return Response(serializer.data, status=status.HTTP_200_OK)
-    # if request.method == 'PUT':
-    #     comment = Favorite.objects.filter(pk=request.user.id).first()
-    #     serializer = FavoriteSerializer(comment, data=request.data)
-    #     if serializer.is_valid(raise_exception=True):
-    #         serializer.save(user = request.user)
-    #         return Response(serializer.data)
+    elif request.method == 'PUT':
+        comment = get_object_or_404(Favorite, pk=pk)
+        if request.method == 'PUT':
+            serializer = FavoriteSerializer(comment, data=request.data)
+            serializer.is_valid(raise_exception=True)
+            serializer.save()
+            return Response(serializer.data)
 
 
 
