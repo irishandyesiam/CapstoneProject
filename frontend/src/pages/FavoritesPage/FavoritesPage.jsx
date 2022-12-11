@@ -16,9 +16,9 @@ const DisplayFavorites = (props) => {
 
   
 
-  useEffect(() => {
-    addNewComment();
-  }, []);
+  // useEffect(() => {
+  //   addNewComment();
+  // }, []);
 
   // async function addNewComment(newComment){
   //   console.log(newComment)
@@ -34,36 +34,36 @@ const DisplayFavorites = (props) => {
   //   console.log(response)
   // } 
   
-  async function addNewComment(newComment)
-  {
-    console.log("testing", newComment);
-    let recipe = props.recipes;
-    let rating = 2;
-    let comments = newComment;
+  // async function addNewComment(newComment)
+  // {
+  //   console.log("testing", newComment);
+  //   let recipe = props.recipes;
+  //   let rating = 2;
+  //   let comments = newComment;
 
-    let putComment = {
-      recipe,
-      rating,
-      comments,
-    };
-    console.log(putComment);
+  //   let putComment = {
+  //     recipe,
+  //     rating,
+  //     comments,
+  //   };
+  //   console.log(putComment);
   
-    console.log("Post Comment", putComment);
-    try {
-      let response = await axios.put(
-        "http://127.0.0.1:8000/api/favorite_recipe/comment/",
-        addedComment,
-        {
-          headers: {
-            Authorization: "Bearer " + token,
-          },
-        }
-      );
-      console.log(response.data);
-    } catch (error) {
-      console.log(error.response.data);
-    }
-  }
+  //   console.log("Post Comment", putComment);
+  //   try {
+  //     let response = await axios.put(
+  //       "http://127.0.0.1:8000/api/favorite_recipe/comment/",
+  //       addedComment,
+  //       {
+  //         headers: {
+  //           Authorization: "Bearer " + token,
+  //         },
+  //       }
+  //     );
+  //     console.log(response.data);
+  //   } catch (error) {
+  //     console.log(error.response.data);
+  //   }
+  // }
 
   let navigate = useNavigate();
 
@@ -77,15 +77,15 @@ return (
       <div className="container">
         {props &&
           props.recipes.map((recipes) => (
-            <p key={recipes.recipe.id}>
+            <p key={recipes.recipe.id}><br></br>
               <li onClick={() => handleFavoriteId(recipes)}> {recipes.recipe.name}  </li>
               <img
                 className="img"
                 src={recipes.recipe.image}
                 alt={"unavailable"}
               />
-              <p> {recipes.comments} </p>
-              <CommentsForm addNewComment={addNewComment} />
+              {/* <p> {recipes.comments} </p>
+              <CommentsForm addNewComment={addNewComment} /> */}
             </p>
           ))}
       </div>

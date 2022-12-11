@@ -62,7 +62,7 @@ const ShoppingList = () => {
       {recipes &&
         recipes.map((el) => (
           <p key={el.id}>
-            {el.items} <button type='delete' onClick={() => handleDelete(el)}>Delete</button>
+            {el.items} <button type='button' onClick={() => handleDelete(el)}>Remove</button>
           </p>
         ))}
     </div>

@@ -15,10 +15,10 @@ const FavoriteRecipeDisplay = (favorite_recipe) => {
   {
     console.log("Input form comment", newComment);
     
-    let recipe = favorite_recipe.favorite_recipe.recipe.id;
+    let recipe = favorite_recipe.favorite_recipe.id;
     let rating = 5; 
     let comments = newComment.comments;
-    console.log(newComment.comments)
+    console.log(favorite_recipe.favorite_recipe.id)
 
     let putComment = {
       recipe_id: recipe,
@@ -54,7 +54,8 @@ const FavoriteRecipeDisplay = (favorite_recipe) => {
             alt={"unavailable"}
           />
           <h1>{favorite_recipe.favorite_recipe.recipe.name}</h1>
-          <p><CommentsForm addNewComment={addNewComment} /></p>
+          <h3>{favorite_recipe.favorite_recipe.comments}</h3>
+          <div><CommentsForm addNewComment={addNewComment} /></div>
         </div>
       )}
     </div>
