@@ -4,9 +4,11 @@
     float: left;
     column-count: 4;
     column-gap: 50px;
-   
     justify-items: center;
     align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
 
 .img-box {
@@ -16,6 +18,7 @@
     height: auto;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     -webkit-column-break-inside: avoid;
+   
 }
 
 .img {
