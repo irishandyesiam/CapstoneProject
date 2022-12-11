@@ -1,4 +1,16 @@
+.img-gallery {
+    margin: 5px;
+    border: 1px solid #ccc;
+    float: left;
+    width: 360px;
+}
+
 .img {
-    width: 50%;
+    width: 100%;
     height: auto;
+}
+
+.name {
+    padding: 15px;
+    text-align: center;
 }

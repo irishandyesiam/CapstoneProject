@@ -23,7 +23,7 @@ const SearchResultsDisplay = (props) => {
       {props.dish_search.map((el, index) => {
         return (
           <div className="img-box">
-            <img className="img" key={index} src={el.image} alt={"unavailable"} onClick={() => handleDishOnClick(el)} />
+            <img className="img" key={index} src={el.image} alt={"unavailable"} width="600px" height="400px" onClick={() => handleDishOnClick(el)} />
             <h3 className="name">{el.name}</h3>
           </div>
         )
