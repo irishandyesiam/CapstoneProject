@@ -44,6 +44,9 @@ function App() {
     passedFavoriteId();
   }, [])
 
+  console.log(user);
+  console.log(token);
+
   async function getFavoriteRecipes(){
     try{
     let response = await axios.get(`http://127.0.0.1:8000/api/favorite_recipe/`,{
@@ -77,7 +80,7 @@ function App() {
     console.log("Passed ingredient", search_term)
     try{
       let response = await axios.get(`https://tasty.p.rapidapi.com/recipes/list`,{
-      params: {from: '0', size: '10', q: `${search_term}`},
+      params: {from: '0', size: '12', q: `${search_term}`},
       headers: {
         'X-RapidAPI-Key': '07710484e3msh42b10869d913fd2p1180a4jsn6142c9c0fe21',
         'X-RapidAPI-Host': 'tasty.p.rapidapi.com'

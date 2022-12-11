@@ -9,9 +9,14 @@ import { useNavigate } from "react-router-dom";
 const DisplayFavorites = (props) => {
   const [user, token] = useAuth();
   const [addedComment, setNewComment] = useState([]);
+  const [favoriteRecipes, setFavoriteRecipes] = useState([]);
 
+  console.log(user);
+  console.log(token);
   console.log(props);
   console.log(props.recipe);
+  console.log(favoriteRecipes)
+  
   // console.log(addedComment);
 
   
@@ -64,6 +69,25 @@ const DisplayFavorites = (props) => {
   //     console.log(error.response.data);
   //   }
   // }
+  useEffect(() => {
+    const fetchFavorites = async () => {
+      try {
+        let response = await axios.get(
+          "http://127.0.0.1:8000/api/favorite_recipe/",
+          {
+            headers: {
+              Authorization: "Bearer " + token,
+            },
+          }
+        );
+        setFavoriteRecipes(response.data);
+        console.log(response)
+      } catch (error) {
+        console.log(error.response.data);
+      }
+    };
+    fetchFavorites();
+  }, [token]);
 
   let navigate = useNavigate();
 
@@ -75,8 +99,8 @@ const DisplayFavorites = (props) => {
 
 return (
       <div className="container">
-        {props &&
-          props.recipes.map((recipes) => (
+        {favoriteRecipes &&
+          favoriteRecipes.map((recipes) => (
             <p key={recipes.recipe.id}><br></br>
               <li onClick={() => handleFavoriteId(recipes)}> {recipes.recipe.name}  </li>
               <img
