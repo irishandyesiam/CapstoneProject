@@ -101,7 +101,7 @@ return (
       <div className="container">
         {favoriteRecipes &&
           favoriteRecipes.map((recipes) => (
-            <p key={recipes.recipe.id}><br></br>
+            <p key={recipes.id}><br></br>
               <li onClick={() => handleFavoriteId(recipes)}> {recipes.recipe.name}  </li>
               <img
                 className="img"

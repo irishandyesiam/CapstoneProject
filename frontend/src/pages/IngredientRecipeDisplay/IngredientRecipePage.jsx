@@ -122,14 +122,14 @@ const IngredientRecipeDisplay = (recipe) => {
   }
 
   return (
-    <div class="img-gallery">
-      <div className="img-box">
+    <div className="recipe-box">
+      <div className="recipe-img-box">
         <img
-          className="img"
+          className="recipe-img-pic"
           src={recipe.passed_ing_recipe.thumbnail_url}
           alt={"unavailable"}
         />
-        <h3 className="name">{recipe.passed_ing_recipe.name}</h3><br></br>
+        <h3 className="recipe-name">{recipe.passed_ing_recipe.name}</h3><br></br>
         <h2>Ingredients</h2>
         {recipe.passed_ing_recipe.sections[0].components &&
           recipe.passed_ing_recipe.sections[0].components.map((el) => {

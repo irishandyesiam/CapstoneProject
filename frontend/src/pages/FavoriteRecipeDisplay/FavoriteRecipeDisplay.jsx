@@ -15,7 +15,7 @@ const FavoriteRecipeDisplay = (favorite_recipe) => {
   {
     console.log("Input form comment", newComment);
     
-    let recipe = favorite_recipe.favorite_recipe.id;
+    let recipe = favorite_recipe.favorite_recipe.recipe.id;
     let rating = 5; 
     let comments = newComment.comments;
     console.log(favorite_recipe.favorite_recipe.id)
