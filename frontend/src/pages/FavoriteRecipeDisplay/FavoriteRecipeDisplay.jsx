@@ -15,7 +15,7 @@ const FavoriteRecipeDisplay = (favorite_recipe) => {
   {
     console.log("Input form comment", newComment);
     
-    let recipe = favorite_recipe.favorite_recipe.recipe.id;
+    let recipe = favorite_recipe.favorite_recipe.id;
     let rating = 5; 
     let comments = newComment.comments;
     console.log(favorite_recipe.favorite_recipe.id)
@@ -26,7 +26,7 @@ const FavoriteRecipeDisplay = (favorite_recipe) => {
       comments: comments,
     };
     console.log("Post Comment", putComment);
-
+  
     try {
       let response = await axios.put(
         `http://127.0.0.1:8000/api/favorite_recipe/${recipe}/`,

@@ -23,6 +23,16 @@ def favorites_list(request):
             return Response(serializer.data, status=status.HTTP_202_ACCEPTED) 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def favorites_comment(request):
+    if request.method == 'POST':
+        serializer = FavoriteSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save(user = request.user)
+            return Response(serializer.data, status=status.HTTP_202_ACCEPTED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 @api_view(['GET', 'PUT'])
 @permission_classes([IsAuthenticated])
 def favorites_detail(request, pk): 
