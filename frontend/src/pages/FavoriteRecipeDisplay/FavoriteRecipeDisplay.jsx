@@ -28,8 +28,8 @@ const FavoriteRecipeDisplay = (favorite_recipe) => {
     console.log("Post Comment", putComment);
   
     try {
-      let response = await axios.put(
-        `http://127.0.0.1:8000/api/favorite_recipe/${recipe}/`,
+      let response = await axios.post(
+        `http://127.0.0.1:8000/api/favorite_recipe/comment/`,
         putComment,
         {
           headers: {
