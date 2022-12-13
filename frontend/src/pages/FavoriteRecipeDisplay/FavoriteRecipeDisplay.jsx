@@ -11,6 +11,7 @@ const FavoriteRecipeDisplay = (favorite_recipe) => {
   useEffect(() => {
     addNewComment();
     fetchFavorites();
+    
   }, []);
   
   async function addNewComment(newComment)
@@ -60,13 +61,13 @@ const FavoriteRecipeDisplay = (favorite_recipe) => {
   }
   console.log(listFavoriteRecipe)
 
-  let filteredFavoriteList = listFavoriteRecipe.filter((e) => e.recipe.id == favorite_recipe.favorite_recipe.id)
+  let filteredFavoriteList = listFavoriteRecipe.filter((e) => e.recipe.id === favorite_recipe.favorite_recipe.id)
   console.log("Filtered by id", filteredFavoriteList)
 
-  let parseIngredients = JSON.parse(favorite_recipe.favorite_recipe.recipe.ingredients)
-  console.log(parseIngredients)
-  let instructionsParse = JSON.parse(favorite_recipe.favorite_recipe.recipe.instructions)
-  console.log(instructionsParse)
+  // let parseIngredients = JSON.parse(favorite_recipe.favorite_recipe.recipe.ingredients)
+  // console.log(parseIngredients)
+  // let instructionsParse = JSON.parse(favorite_recipe.favorite_recipe.recipe.instructions)
+  // console.log(instructionsParse)
 
   return (
     
@@ -80,9 +81,11 @@ const FavoriteRecipeDisplay = (favorite_recipe) => {
           />
           <h1>{favorite_recipe.favorite_recipe.recipe.name}</h1><br></br>
           <h2>Ingredients</h2>
-          <h3>{parseIngredients && parseIngredients.map((ele) =>(<p key={ele}><ul>{ele}</ul></p>))}</h3><br></br>
+          <ul>{favorite_recipe.favorite_recipe.recipe.ingredients}</ul><br></br>
+          {/* <h3>{parseIngredients && parseIngredients.map((ele) =>(<p key={ele}><ul>{ele}</ul></p>))}</h3><br></br> */}
           <h2>Instructions</h2>
-          <h3>{instructionsParse && instructionsParse.map((elem) =>(<p key={elem}><ul>{elem}</ul></p>))}</h3><br></br>
+          <ul>{favorite_recipe.favorite_recipe.recipe.instructions}</ul>
+          {/* <h3>{instructionsParse && instructionsParse.map((elem) =>(<p key={elem}><ul>{elem}</ul></p>))}</h3><br></br> */}
           <h1>Comments</h1>
           
         </div>
