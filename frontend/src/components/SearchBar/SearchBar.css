@@ -1,5 +1,6 @@
 
 .searchbar {
-    display: flex;
-    
+    width:300px;
+    padding: 1px;
+    margin: 5px;
 }
