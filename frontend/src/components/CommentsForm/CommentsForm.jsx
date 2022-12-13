@@ -1,7 +1,9 @@
 import React from 'react';
 import {useState} from 'react';
 
+
 const AddComment = (props) => {
+
 
 
 const [comment, setComment] = useState([]);

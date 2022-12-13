@@ -73,16 +73,18 @@ const FavoriteRecipeDisplay = (favorite_recipe) => {
             src={favorite_recipe.favorite_recipe.recipe.image}
             alt={"unavailable"}
           />
-          <h1>{favorite_recipe.favorite_recipe.recipe.name}</h1>
-          <h3>{favorite_recipe.favorite_recipe.recipe.ingredients}</h3>
-          <h3>{favorite_recipe.favorite_recipe.recipe.instructions}</h3>
+          <h1>{favorite_recipe.favorite_recipe.recipe.name}</h1><br></br>
+          <h2>Ingredients</h2>
+          <h3>{favorite_recipe.favorite_recipe.recipe.ingredients}</h3><br></br>
+          <h2>Instructions</h2>
+          <h3>{favorite_recipe.favorite_recipe.recipe.instructions}</h3><br></br>
           <h1>Comments</h1>
           
         </div>
       )}
       <div>
         {filteredFavoriteList && filteredFavoriteList.map((el) =>(
-          <p>
+          <p key={el.id}>
             <li>{el.comments}</li>
           </p>
         ))}
