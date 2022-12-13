@@ -7,8 +7,10 @@ import CommentsForm from "../../components/CommentsForm/CommentsForm"
 const FavoriteRecipeDisplay = (favorite_recipe) => {
   const [user, token] = useAuth();
   const [addedComment, setNewComment] = useState([]);
+  const [listFavoriteRecipe, setFavoriteRecipes] = useState([]);
   useEffect(() => {
     addNewComment();
+    fetchFavorites();
   }, []);
   
   async function addNewComment(newComment)
@@ -42,9 +44,27 @@ const FavoriteRecipeDisplay = (favorite_recipe) => {
       console.log(error.response.data);
     }
   }
-  
+
+  async function fetchFavorites(){
+    try{
+    let response = await axios.get(`http://127.0.0.1:8000/api/favorite_recipe/`,{
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    });
+    setFavoriteRecipes(response.data);
+    console.log(response.data)
+    } catch(ex){
+    console.log(`ERROR in getFavoriteRecipes EXCEPTION: ${ex}`);
+    }
+  }
+  console.log(listFavoriteRecipe)
+
+  let filteredFavoriteList = listFavoriteRecipe.filter((e) => e.recipe.id == favorite_recipe.favorite_recipe.id)
+  console.log("Filtered by id", filteredFavoriteList)
 
   return (
+    
     <div>
       {favorite_recipe.favorite_recipe.recipe?.image && (
         <div>
@@ -54,11 +74,22 @@ const FavoriteRecipeDisplay = (favorite_recipe) => {
             alt={"unavailable"}
           />
           <h1>{favorite_recipe.favorite_recipe.recipe.name}</h1>
-          <h3>{favorite_recipe.favorite_recipe.comments}</h3>
-          <div><CommentsForm addNewComment={addNewComment} /></div>
+          <h3>{favorite_recipe.favorite_recipe.recipe.ingredients}</h3>
+          <h3>{favorite_recipe.favorite_recipe.recipe.instructions}</h3>
+          <h1>Comments</h1>
+          
         </div>
       )}
+      <div>
+        {filteredFavoriteList && filteredFavoriteList.map((el) =>(
+          <p>
+            <li>{el.comments}</li>
+          </p>
+        ))}
+      </div>
+      <div><CommentsForm addNewComment={addNewComment} /></div>
     </div>
+    
   );
 };
 
