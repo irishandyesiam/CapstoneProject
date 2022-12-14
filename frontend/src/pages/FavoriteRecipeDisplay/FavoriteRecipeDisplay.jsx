@@ -8,9 +8,11 @@ const FavoriteRecipeDisplay = (favorite_recipe) => {
   const [user, token] = useAuth();
   const [addedComment, setNewComment] = useState([]);
   const [listFavoriteRecipe, setFavoriteRecipes] = useState([]);
+  const [filteredByIdFavorite, setFilterById] = useState([]);
   useEffect(() => {
     addNewComment();
     fetchFavorites();
+    filterById();
     
   }, []);
   
@@ -53,17 +55,29 @@ const FavoriteRecipeDisplay = (favorite_recipe) => {
         Authorization: "Bearer " + token,
       },
     });
+    console.log("setFavoriteRecipe data", response.data)
     setFavoriteRecipes(response.data);
-    console.log(response.data)
     } catch(ex){
     console.log(`ERROR in getFavoriteRecipes EXCEPTION: ${ex}`);
     }
   }
   console.log(listFavoriteRecipe)
 
+  async function filterById() {
+  try {
   let filteredFavoriteList = listFavoriteRecipe.filter((e) => e.recipe.id === favorite_recipe.favorite_recipe.id)
   console.log("Filtered by id", filteredFavoriteList)
+  setFilterById(filteredFavoriteList)
+  } catch (ex)
+  {
+    console.log(`ERROR in filterById EXCEPTION: ${ex} `)
+  }
+  }
 
+  function parseIngredients(favorite_recipe) {
+    let ingredients_list = JSON.parse(favorite_recipe.favorite_recipe.recipe.ingredients)
+    return ingredients_list
+  }
   // let parseIngredients = JSON.parse(favorite_recipe.favorite_recipe.recipe.ingredients)
   // console.log(parseIngredients)
   // let instructionsParse = JSON.parse(favorite_recipe.favorite_recipe.recipe.instructions)
