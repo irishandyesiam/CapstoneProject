@@ -70,7 +70,7 @@ function App() {
       },
     });
     setFavoriteRecipe(response.data);
-    console.log(response.data)
+    console.log("passedFavoriteID data", response.data)
     } catch(ex){
     console.log(`ERROR in passedFavoriteId EXCEPTION: ${ex}`);
     }
@@ -107,7 +107,7 @@ function App() {
           console.log(response.data)
           setPassedIngredientsId(response.data);
       } catch(error){
-        console.log(`ERROR in submittedSearchTerm EXCEPTION: ${error}`);
+        console.log(`ERROR in passedIdNumber EXCEPTION: ${error}`);
       }
     };
   

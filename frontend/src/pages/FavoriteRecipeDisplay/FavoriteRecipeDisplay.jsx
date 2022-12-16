@@ -13,7 +13,6 @@ const FavoriteRecipeDisplay = (favorite_recipe) => {
     addNewComment();
     fetchFavorites();
     filterById();
-    
   }, []);
   
   async function addNewComment(newComment)
@@ -73,6 +72,7 @@ const FavoriteRecipeDisplay = (favorite_recipe) => {
     console.log(`ERROR in filterById EXCEPTION: ${ex} `)
   }
   }
+  
 
   function parseIngredients(favorite_recipe) {
     let ingredients_list = JSON.parse(favorite_recipe.favorite_recipe.recipe.ingredients)
