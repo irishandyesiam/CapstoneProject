@@ -169,7 +169,7 @@ function App() {
         <Route path="/shopping_list" element={<PrivateRoute><ShoppingList /></PrivateRoute>} />
         <Route path="/inspire_display" element={<PrivateRoute><IngredientRecipePage passed_ing_recipe={passed_ing_recipe} /></PrivateRoute>} />
         <Route path="/favorites" element={<PrivateRoute><FavoritesPage recipes={recipes} passedFavoriteId={passedFavoriteId}/></PrivateRoute>} />
-        <Route path="/favorite_recipe_display" element={<PrivateRoute><FavoriteRecipeDisplay favorite_recipe={favorite_recipe} /></PrivateRoute>}/>
+        <Route path="/favorite_recipe_display/:id" element={<PrivateRoute><FavoriteRecipeDisplay favorite_recipe={favorite_recipe} /></PrivateRoute>}/>
       </Routes>
       {/* <Footer /> */}
     </div>

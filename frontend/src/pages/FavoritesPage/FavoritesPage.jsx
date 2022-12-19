@@ -92,7 +92,7 @@ const DisplayFavorites = (props) => {
   let navigate = useNavigate();
 
   function handleFavoriteId(fav_recipe) {
-    console.log(fav_recipe)
+    console.log("Navigate to favorite recipe display", fav_recipe.id)
     props.passedFavoriteId(fav_recipe)
     navigate('/favorite_recipe_display/')
   }
@@ -102,7 +102,7 @@ return (
         {favoriteRecipes &&
           favoriteRecipes.map((recipes) => (
             <p key={recipes.id}><br></br>
-              <li onClick={() => handleFavoriteId(recipes)}> {recipes.recipe.name}  </li>
+              <li onClick={() => navigate(`/favorite_recipe_display/${fav_recipe.id}`)}> {recipes.recipe.name}  </li>
               <img
                 className="img"
                 src={recipes.recipe.image}

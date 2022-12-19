@@ -60,7 +60,7 @@ const FavoriteRecipeDisplay = (favorite_recipe) => {
     console.log(`ERROR in getFavoriteRecipes EXCEPTION: ${ex}`);
     }
   }
-  console.log(listFavoriteRecipe)
+  console.log("Fetched favorite recipes", listFavoriteRecipe)
 
   async function filterById() {
   try {
