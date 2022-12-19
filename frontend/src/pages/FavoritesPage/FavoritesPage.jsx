@@ -102,7 +102,7 @@ return (
         {favoriteRecipes &&
           favoriteRecipes.map((recipes) => (
             <p key={recipes.id}><br></br>
-              <li onClick={() => navigate(`/favorite_recipe_display/${fav_recipe.id}`)}> {recipes.recipe.name}  </li>
+              <li onClick={() => navigate(`/favorite_recipe_display/${recipes.recipe.id}`)}> {recipes.recipe.name}  </li>
               <img
                 className="img"
                 src={recipes.recipe.image}

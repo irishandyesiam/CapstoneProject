@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import axios from "axios";
 import CommentsForm from "../../components/CommentsForm/CommentsForm"
+import { useParams } from "react-router-dom";
+
 
 const FavoriteRecipeDisplay = (favorite_recipe) => {
   const [user, token] = useAuth();
@@ -47,9 +49,12 @@ const FavoriteRecipeDisplay = (favorite_recipe) => {
     }
   }
 
+  console.log("Id for get favorite by id", useParams());
+  let fav_rec = useParams()
+  console.log(fav_rec.id)
   async function fetchFavorites(){
     try{
-    let response = await axios.get(`http://127.0.0.1:8000/api/favorite_recipe/`,{
+    let response = await axios.get(`http://127.0.0.1:8000/api/favorite_recipe/${fav_rec.id}/`,{
       headers: {
         Authorization: "Bearer " + token,
       },
