@@ -4,6 +4,7 @@ import useAuth from '../../hooks/useAuth';
 import axios from 'axios';
 
 const DisplayRecipe = (props) => {
+console.log(props)
     const [user, token] = useAuth();
     const [userRecipes, setUserRecipes] = useState([]);
 
