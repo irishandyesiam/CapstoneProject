@@ -20,13 +20,17 @@ useEffect(() => {
 }
 };
 fetchUserRecipes();}, [token]);
+
+console.log(userRecipes)
 return (
     <div>
     {userRecipes &&
         userRecipes.map((recipes) => (
           <p>
             {recipes.name} 
+            <img src={recipes.image} alt={"unavailable"}/>
           </p>
+          
         ))}
     </div>
     )
