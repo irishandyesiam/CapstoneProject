@@ -14,41 +14,40 @@ const FavoriteRecipeDisplay = (favorite_recipe) => {
   const [someObject, setSomeObject] = useState(null)
   useEffect(() => {
     fetchFavorites();
-    // addNewComment();
+    addNewComment();
     // filterById();
   }, []);
   
-  // async function addNewComment(newComment)
-  // {
-  //   console.log("Input form comment", newComment);
-    
-  //   let recipe = favorite_recipe.favorite_recipe.id;
-  //   let rating = 5; 
-  //   let comments = newComment.comments;
-  //   console.log(favorite_recipe.favorite_recipe.id)
 
-  //   let putComment = {
-  //     recipe_id: recipe,
-  //     rating: rating,
-  //     comments: comments,
-  //   };
-  //   console.log("Post Comment", putComment);
+  async function addNewComment(newComment)
+  {
+    console.log("Input form comment", newComment);
+    let comments = newComment.comments;
+    let rating = 5; 
+    let recipe_id = idForRecipe;
+
+    let putComment = {
+      rating: rating,
+      comments: comments,
+      recipe_id: recipe_id
+    };
+    console.log("Post Comment", putComment);
   
-  //   try {
-  //     let response = await axios.post(
-  //       `http://127.0.0.1:8000/api/favorite_recipe/comment/`,
-  //       putComment,
-  //       {
-  //         headers: {
-  //           Authorization: "Bearer " + token,
-  //         },
-  //       }
-  //     );
-  //       console.log(response.data);
-  //   } catch (error) {
-  //     console.log(error.response.data);
-  //   }
-  // }
+    try {
+      let response = await axios.post(
+        `http://127.0.0.1:8000/api/favorite_recipe/comment/`,
+        putComment,
+        {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        }
+      );
+        console.log(response.data);
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  }
 
   
   let fav_rec = useParams()
@@ -80,19 +79,19 @@ const FavoriteRecipeDisplay = (favorite_recipe) => {
   // }
   
 
-  // function parseIngredients(favorite_recipe) {
-  //   let ingredients_list = JSON.parse(listFavoriteRecipe.recipe.ingredients)
-  //   return ingredients_list
-  // }
+  function parseIngredients() {
+    let ingredients_list = JSON.parse(listFavoriteRecipe.recipe.ingredients)
+    return ingredients_list
+  }
 
-  // function recipeInstructionParse(favorite_recipe) {
-  //   let instructions_list = JSON.parse(listFavoriteRecipe.recipe.instructions)
-  //   return instructions_list
-  // }
+  function recipeInstructionParse() {
+    let instructions_list = JSON.parse(listFavoriteRecipe.recipe.instructions)
+    return instructions_list
+  }
   // let parseIngredients = JSON.parse(favorite_recipe.favorite_recipe.recipe.ingredients)
-  // console.log(parseIngredients)
+  console.log(parseIngredients())
   // let instructionsParse = JSON.parse(favorite_recipe.favorite_recipe.recipe.ingredients)
-  // console.log(instructionsParse)
+  console.log(recipeInstructionParse())
 
   return (
     
@@ -108,10 +107,12 @@ const FavoriteRecipeDisplay = (favorite_recipe) => {
           />
           <h1>{listFavoriteRecipe.recipe.name}</h1><br></br>
           <h2>Ingredients</h2>
-          {/* <ul>{parseIngredients()}</ul><br></br> */}
+          <p>{parseIngredients().map((el) => (
+            <ul>{el}</ul>
+          ))}</p><br></br>
           {/* <h3>{parseIngredients && parseIngredients.map((ele) =>(<p key={ele}><ul>{ele}</ul></p>))}</h3><br></br> */}
           <h2>Instructions</h2>
-          {/* <ul>{recipeInstructionParse()}</ul> */}
+          <p>{recipeInstructionParse()}</p>
           {/* <h3>{instructionsParse && instructionsParse.map((elem) =>(<p key={elem}><ul>{elem}</ul></p>))}</h3><br></br> */}
           <h1>Comments</h1>
           
@@ -124,7 +125,7 @@ const FavoriteRecipeDisplay = (favorite_recipe) => {
           </p>
         ))} */}
       </div>
-      {/* <div><CommentsForm addNewComment={addNewComment} /></div> */}
+      <div><CommentsForm addNewComment={addNewComment} /></div>
     </div>
     
   );
