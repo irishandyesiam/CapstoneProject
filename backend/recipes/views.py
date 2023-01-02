@@ -4,6 +4,7 @@ from .serializers import RecipeSerializer
 from .models import Recipe
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import status;
+from django.shortcuts import get_object_or_404
 
 
 @api_view(['GET'])
