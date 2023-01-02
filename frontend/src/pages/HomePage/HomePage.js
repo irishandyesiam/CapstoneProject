@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import DisplayRecipeBook from "../../components/DisplayRecipeBook/DisplayRecipeBook";
+import RecipeDetail from "../../components/RecipeDetail/RecipeDetail";
 
 import axios from "axios";
 
@@ -19,6 +20,7 @@ const HomePage = () => {
       <h1>How do I use this food? </h1><br></br>
       <h2>Recipe-generator-o-matic ... 5000! </h2>
       <div><DisplayRecipeBook/></div>
+      <div><RecipeDetail/></div>
     </div>
     
   );
