@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import useAuth from '../../hooks/useAuth';
 import axios from 'axios';
 
-const DisplayRecipe = (props) => {
+const DisplayRecipeBook = (props) => {
 console.log(props)
     const [user, token] = useAuth();
     const [userRecipes, setUserRecipes] = useState([]);
@@ -39,4 +39,4 @@ return (
     )
 }
 
-export default DisplayRecipe;
+export default DisplayRecipeBook;

@@ -27,3 +27,11 @@ def addToRecipeList(request):
             serializer.save(user = request.user)
             return Response(serializer.data, status=status.HTTP_202_ACCEPTED) 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def recipeDetailsById(request, pk):
+    details = get_object_or_404(Recipe, pk=pk)
+    if request.method == 'GET':
+        serializer = RecipeSerializer(details)
+        return Response(serializer.data, status=status.HTTP_200_OK)
