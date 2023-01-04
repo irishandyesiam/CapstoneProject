@@ -89,9 +89,9 @@ const FavoriteRecipeDisplay = (favorite_recipe) => {
     return instructions_list
   }
   // let parseIngredients = JSON.parse(favorite_recipe.favorite_recipe.recipe.ingredients)
-  console.log(parseIngredients())
+  // console.log(parseIngredients())
   // let instructionsParse = JSON.parse(favorite_recipe.favorite_recipe.recipe.ingredients)
-  console.log(recipeInstructionParse())
+  // console.log(recipeInstructionParse())
 
   return (
     
@@ -110,7 +110,7 @@ const FavoriteRecipeDisplay = (favorite_recipe) => {
           <p>{parseIngredients().map((el) => (
             <ul>{el}</ul>
           ))}</p><br></br>
-          {/* <h3>{parseIngredients && parseIngredients.map((ele) =>(<p key={ele}><ul>{ele}</ul></p>))}</h3><br></br> */}
+          {/* <h3>{parseIngredients.map((ele) =>(<p key={ele}><ul>{ele}</ul></p>))}</h3><br></br> */}
           <h2>Instructions</h2>
           <p>{recipeInstructionParse()}</p>
           {/* <h3>{instructionsParse && instructionsParse.map((elem) =>(<p key={elem}><ul>{elem}</ul></p>))}</h3><br></br> */}

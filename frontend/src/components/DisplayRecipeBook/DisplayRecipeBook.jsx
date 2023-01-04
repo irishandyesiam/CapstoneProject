@@ -22,6 +22,10 @@ useEffect(() => {
 };
 fetchUserRecipes();}, [token]);
 
+function filterPerId(selected) {
+    console.log("Should print when clicked", selected.name)
+}
+
 console.log(userRecipes)
 return (
     <div>
@@ -29,6 +33,8 @@ return (
         userRecipes.map((recipes) => (
           <p>
             {recipes.name} 
+            <button className="btn" onClick={()=> filterPerId(recipes)}>more</button>
+            
             {/* <img src={recipes.image} alt={"unavailable"}/> */}
             {/* {showFullRecipe ? recipes : `${recipes.ingredients}`}
             <button className="btn" onClick={() => setShowFullRecipe(!showFullRecipe)}>{showFullRecipe ? "More" : "Less"}</button> */}
