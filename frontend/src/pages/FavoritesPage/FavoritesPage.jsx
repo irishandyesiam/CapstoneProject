@@ -100,12 +100,13 @@ const DisplayFavorites = (props) => {
 return (
       <div className="container">
         {favoriteRecipes &&
-          favoriteRecipes.map((recipes) => (
-            <p key={recipes.id}><br></br>
-              <li onClick={() => navigate(`/favorite_recipe_display/${recipes.recipe.id}`)}> {recipes.recipe.name}  </li>
+          favoriteRecipes.map((element) => (
+            <p key={element.id}><br></br>
+         
+              <li onClick={() => navigate(`/favorite_recipe_display/${element.id}`)}> {element.recipe.name}  </li>
               <img
                 className="img"
-                src={recipes.recipe.image}
+                src={element.recipe.image}
                 alt={"unavailable"}
               />
               {/* <p> {recipes.comments} </p>

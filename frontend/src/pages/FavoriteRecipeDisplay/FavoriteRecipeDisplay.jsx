@@ -12,7 +12,10 @@ const FavoriteRecipeDisplay = (favorite_recipe) => {
   const [listFavoriteRecipe, setFavoriteRecipes] = useState(null);
   const [filteredByIdFavorite, setFilterById] = useState([]);
   const [someObject, setSomeObject] = useState(null)
+  const fav_rec = useParams()
+  console.log("Favorite Recipe Display param, line 16",fav_rec)
   useEffect(() => {
+    console.log("Favorite Recipe Display param, line 18", fav_rec)
     fetchFavorites();
     addNewComment();
     // filterById();
@@ -24,7 +27,8 @@ const FavoriteRecipeDisplay = (favorite_recipe) => {
     console.log("Input form comment", newComment);
     let comments = newComment.comments;
     let rating = 5; 
-    let recipe_id = idForRecipe;
+    // TODO: Change recipe_id value back to dynamically generated id
+    let recipe_id = 20;
 
     let putComment = {
       rating: rating,
@@ -50,10 +54,10 @@ const FavoriteRecipeDisplay = (favorite_recipe) => {
   }
 
   
-  let fav_rec = useParams()
-  console.log(fav_rec.id)
+
   async function fetchFavorites(){
     try{
+      console.log("Line 59 FavoriteRecipeDisplay", fav_rec)
     let response = await axios.get(`http://127.0.0.1:8000/api/favorite_recipe/${fav_rec.id}/`,{
       headers: {
         Authorization: "Bearer " + token,
