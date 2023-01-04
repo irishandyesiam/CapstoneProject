@@ -44,9 +44,6 @@ function App() {
     passedFavoriteId();
   }, [])
 
-  console.log(user);
-  console.log(token);
-
   async function getFavoriteRecipes(){
     try{
     let response = await axios.get(`http://127.0.0.1:8000/api/favorite_recipe/`,{
@@ -62,7 +59,6 @@ function App() {
   }
 
   async function passedFavoriteId(fav_recipe){
-    console.log(fav_recipe.id)
     try{
     let response = await axios.get(`http://127.0.0.1:8000/api/favorite_recipe/${fav_recipe.id}/`,{
       headers: {

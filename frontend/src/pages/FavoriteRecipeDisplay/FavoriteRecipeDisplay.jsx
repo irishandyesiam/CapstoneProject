@@ -66,7 +66,7 @@ const FavoriteRecipeDisplay = (favorite_recipe) => {
     console.log("setFavoriteRecipe data", response.data)
     setFavoriteRecipes(response.data);
     } catch(ex){
-    console.log(`ERROR in getFavoriteRecipes EXCEPTION: ${ex}`);
+    console.log(`ERROR in fetchFavorites EXCEPTION: ${ex}`);
     }
   }
   console.log("Fetched favorite recipes", listFavoriteRecipe)

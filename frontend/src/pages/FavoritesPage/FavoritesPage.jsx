@@ -10,12 +10,6 @@ const DisplayFavorites = (props) => {
   const [user, token] = useAuth();
   const [addedComment, setNewComment] = useState([]);
   const [favoriteRecipes, setFavoriteRecipes] = useState([]);
-
-  console.log(user);
-  console.log(token);
-  console.log(props);
-  console.log(props.recipe);
-  console.log(favoriteRecipes)
   
   // console.log(addedComment);
 
@@ -81,7 +75,6 @@ const DisplayFavorites = (props) => {
           }
         );
         setFavoriteRecipes(response.data);
-        console.log(response)
       } catch (error) {
         console.log(error.response.data);
       }
