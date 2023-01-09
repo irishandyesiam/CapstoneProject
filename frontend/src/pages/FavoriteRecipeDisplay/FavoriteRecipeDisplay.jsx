@@ -116,6 +116,7 @@ const FavoriteRecipeDisplay = (favorite_recipe) => {
           ))}</p><br></br>
           {/* <h3>{parseIngredients.map((ele) =>(<p key={ele}><ul>{ele}</ul></p>))}</h3><br></br> */}
           <h2>Instructions</h2>
+          {/* TO DO: Make display of instructions look prettier */}
           <p>{recipeInstructionParse()}</p>
           {/* <h3>{instructionsParse && instructionsParse.map((elem) =>(<p key={elem}><ul>{elem}</ul></p>))}</h3><br></br> */}
           <h1>Comments</h1>
