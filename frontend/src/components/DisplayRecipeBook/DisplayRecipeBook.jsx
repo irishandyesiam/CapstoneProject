@@ -21,10 +21,6 @@ useEffect(() => {
 };
 fetchUserRecipes();}, [token]);
 
-const handleClick = () => {
-    setToggle(!toggle);
-};
-
 console.log(userRecipes)
 return (
     <div>
@@ -32,22 +28,6 @@ return (
         userRecipes.map((recipes) => (
           <p>
             {recipes.name} 
-            <div>
-            <button 
-            onClick={handleClick} 
-            class="btn btn-info mb-5">
-            {toggle ? "Less" : "More"}
-            </button>
-
-            {toggle ?
-                <ul class="list-group">
-                <li class="list-group-item">{recipes.ingredients}</li>
-                <li class="list-group-item">{recipes.instructions}</li>
-                </ul>
-                :
-                <></>
-            }
-            </div>
           </p>
           
         ))}
