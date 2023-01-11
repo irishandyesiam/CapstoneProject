@@ -3,10 +3,9 @@ import useAuth from '../../hooks/useAuth';
 import axios from 'axios';
 
 const DisplayRecipeBook = (props) => {
-console.log(props)
     const [user, token] = useAuth();
     const [userRecipes, setUserRecipes] = useState([]);
-    const [showFullRecipe, setShowFullRecipe] = useState([false]);
+    const [toggle, setToggle] = useState(true);
 
 useEffect(() => {
     const fetchUserRecipes = async () => {
@@ -22,14 +21,9 @@ useEffect(() => {
 };
 fetchUserRecipes();}, [token]);
 
-// function filterPerId(selected) {
-//     console.log("Should print when clicked", selected)
-
-    // function setShowFullRecipe(recipes) {
-    //     console.log(recipes)
-    // }
-    
-// }
+const handleClick = () => {
+    setToggle(!toggle);
+};
 
 console.log(userRecipes)
 return (
@@ -38,11 +32,22 @@ return (
         userRecipes.map((recipes) => (
           <p>
             {recipes.name} 
-            {/* <button className="btn" onClick={()=> filterPerId(recipes)}>more</button> */}
-            
-            {/* <img src={recipes.image} alt={"unavailable"}/> */}
-            {/* {showFullRecipe ? recipes : `${recipes.ingredients}`} */}
-            {/* <button className="btn" onClick={() => setShowFullRecipe(recipes, !showFullRecipe)}>{showFullRecipe ? "More" : "Less"}</button> */}
+            <div>
+            <button 
+            onClick={handleClick} 
+            class="btn btn-info mb-5">
+            {toggle ? "Less" : "More"}
+            </button>
+
+            {toggle ?
+                <ul class="list-group">
+                <li class="list-group-item">{recipes.ingredients}</li>
+                <li class="list-group-item">{recipes.instructions}</li>
+                </ul>
+                :
+                <></>
+            }
+            </div>
           </p>
           
         ))}
