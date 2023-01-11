@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import useAuth from '../../hooks/useAuth';
 import axios from 'axios';
+import RecipeDetails from '../RecipeDetails/RecipeDetails';
 
 const DisplayRecipeBook = (props) => {
     const [user, token] = useAuth();
@@ -28,7 +29,9 @@ return (
         userRecipes.map((recipes) => (
           <p>
             {recipes.name} 
+            <RecipeDetails />
           </p>
+          
           
         ))}
     </div>
