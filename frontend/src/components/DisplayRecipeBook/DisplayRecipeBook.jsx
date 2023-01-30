@@ -29,7 +29,7 @@ return (
         userRecipes.map((recipes) => (
           <p>
             {recipes.name} 
-            <RecipeDetails />
+            <RecipeDetails recipes={userRecipes}/>
           </p>
           
           
