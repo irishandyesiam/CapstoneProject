@@ -9,4 +9,5 @@ class Recipe(models.Model):
     servings = models.IntegerField(null=True)
     image = models.CharField(max_length=2048)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    favorite = models.BooleanField()
   
