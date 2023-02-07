@@ -17,7 +17,7 @@ const HomePage = () => {
       <h1>Welcome {user.username} to... </h1><br></br>
       <h1>How do I use this food? </h1><br></br>
       <h2>Recipe-generator-o-matic ... 5000! </h2>
-      <div><DisplayRecipeBook/></div>
+      {/* <div><DisplayRecipeBook/></div> */}
     </div>
     
   );
