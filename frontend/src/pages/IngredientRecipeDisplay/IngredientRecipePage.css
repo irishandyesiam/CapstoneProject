@@ -6,7 +6,8 @@
 }
 
 .recipe-img-pic {
-
+    width: 50%;
+    height: auto;
 }
 
 .recipe-name {

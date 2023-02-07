@@ -4,6 +4,7 @@ import useAuth from "../../hooks/useAuth";
 import axios from "axios";
 import CommentsForm from "../../components/CommentsForm/CommentsForm"
 import { useParams } from "react-router-dom";
+import "./FavoriteRecipeDisplay.css";
 
 
 const FavoriteRecipeDisplay = (favorite_recipe) => {
@@ -105,7 +106,7 @@ const FavoriteRecipeDisplay = (favorite_recipe) => {
       {listFavoriteRecipe && 
         <div>
           <img
-            className="img"
+            className="favorite-img"
             src={listFavoriteRecipe.recipe.image}
             alt={"unavailable"}
           />
