@@ -23,6 +23,8 @@ li {
   border: 2px solid white;
   color: white;
   padding: 0.4rem 0.5rem;
+  font-size: large;
+
 }
 
 .navBar button:hover {
@@ -40,3 +42,4 @@ li {
 		-1px 1px 0 #000,
 		1px 1px 0 #000;
 }
+
