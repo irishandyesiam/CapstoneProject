@@ -9,9 +9,8 @@ li {
 }
 
 .navBar {
-  background-color: #A5C7B7;
-  background-image: linear-gradient(to bottom right, #A5C7B7,#5D4257 ) steelblue;
-  box-shadow: 4px 2px 5px gray;
+  background-color: #94849B;
+  box-shadow: 4px 2px 5px #2E3532;
   color: white;
   margin-bottom: 2rem;
   padding: 1.5rem 2rem;
@@ -20,7 +19,7 @@ li {
 
 .navBar button {
   background: transparent;
-  border: 2px solid white;
+  border: 1px solid white;
   color: white;
   padding: 0.4rem 0.5rem;
   font-size: large;
@@ -28,8 +27,8 @@ li {
 }
 
 .navBar button:hover {
-  background: white;
-  color: #A5C7B7;
+  color: #2E3532;
+  border: 1px solid #2E3532;
   cursor: pointer;
 }
 
@@ -37,9 +36,7 @@ li {
   cursor: pointer;
   font-size: 3rem;
   text-shadow: 
-  	-1px -1px 0 #000,
-		1px -1px 0 #000,
-		-1px 1px 0 #000,
-		1px 1px 0 #000;
+		1px -1px 0 #2E3532,
+		1px 1px 0 #2E3532;
 }
 

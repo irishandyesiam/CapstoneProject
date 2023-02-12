@@ -8,6 +8,13 @@
   box-sizing: inherit;
 }
 
+/* Color palette
+2E3532 Onyx
+7E9181 Reseda green
+C7CEDB French gray
+A0AAB2 Cadet gray
+94849B Mountbatten pink */
+
 html {
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
@@ -19,27 +26,28 @@ p {
 }
 
 button {
-  background-color: #C7CEDB;
-  border: 2px solid #94849B;
+  background-color: #94849B;
+  border: 1px solid white;
   color: white;
-  font-size: 1rem;
+  font-size: 1.25rem;
   font-family: inherit;
   max-width: 200px;
   padding: 0.5rem 0.5rem;
   border-radius: 20px;
   transition-duration: 0.4s;
   text-shadow: 
-  -1px -1px 0 #000,
-  1px -1px 0 #000,
-  -1px 1px 0 #000,
-  1px 1px 0 #000;
+		1px -1px 0 #2E3532,
+		1px 1px 0 #2E3532;
 }
 
 button:hover {
   cursor: pointer;
-  color: white;
-  background-color: #94849B;
-  box-shadow: 10px 2px 4px -4px rgba(0,0,0,0.24);
+  color: #2E3532;
+  border: 1px solid #2E3532;
+  box-shadow: 10px 2px 4px -4px #2E3532;
+  text-shadow: 
+		1px -1px 0 #2E3532,
+		1px 1px 0 #2E3532;
 }
 
 .container {
