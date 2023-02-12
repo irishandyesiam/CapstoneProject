@@ -15,6 +15,12 @@ C7CEDB French gray
 A0AAB2 Cadet gray
 94849B Mountbatten pink */
 
+/* text-shadow:
+	-1px -1px 0 #000,
+		1px -1px 0 #000,
+		-1px 1px 0 #000,
+		1px 1px 0 #000; 
+    */
 html {
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
@@ -59,6 +65,8 @@ button:hover {
   overflow: auto;
   text-align: center;
   font-size: x-large;
+  color: #2E3532;
+  text-rendering: optimizeLegibility;
 }
 
 .form {
