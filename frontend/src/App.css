@@ -58,6 +58,7 @@ button:hover {
   max-width: 600px;
   overflow: auto;
   text-align: center;
+  font-size: x-large;
 }
 
 .form {
