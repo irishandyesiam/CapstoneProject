@@ -3,4 +3,11 @@
     width:300px;
     padding: 1px;
     margin: 5px;
+    transition: width 0.4s ease-in-out;
 }
+
+input[type=text] {
+    background-color: #F6EEDF;
+    color: #071013;
+}
+
