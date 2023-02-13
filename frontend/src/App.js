@@ -89,6 +89,7 @@ function App() {
     }
   }
 
+  // Move the 'get-more-info' api request call to BACKEND
   // async function passedIdNumber(id_number) {
   //   console.log("Hopefully right", id_number);
   //   let recipe_id = id_number;

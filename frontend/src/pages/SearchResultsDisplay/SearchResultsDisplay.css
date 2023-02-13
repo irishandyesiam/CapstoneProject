@@ -12,11 +12,12 @@
 }
 
 .img-box {
+    background-color: #F6EEDF;
     margin: 20px;
     padding: 5px;
     width: 180px;
     height: auto;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 #071013;
     -webkit-column-break-inside: avoid;
    
 }

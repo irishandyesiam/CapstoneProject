@@ -24,7 +24,8 @@ A0AAB2 Cadet gray
 html {
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
-  background-color: #AAAAAA;
+  background-color: #D7B377;
+  text-rendering: optimizeLegibility;
 }
 
 p {
@@ -32,9 +33,9 @@ p {
 }
 
 button {
-  background-color: #B7999C;
-  border: 1px solid white;
-  color: white;
+  background-color: #385F71;
+  border: 1px solid #F6EEDF;
+  color: #F6EEDF;
   font-size: 1.25rem;
   font-family: inherit;
   max-width: 200px;
@@ -47,18 +48,17 @@ button {
 }
 
 button:hover {
+  background-color: #2E4162;
   cursor: pointer;
-  color: #071013;
+  color: #F6EEDF;
   border: 1px solid #071013;
-  box-shadow: 10px 2px 4px -4px #071013;
+  box-shadow: 10px 2px 4px -4px #2B4162;
   text-shadow: 
 		1px -1px 0 #071013,
 		1px 1px 0 #071013;
 }
 
 .container {
-  /* border-style: solid; */
-  /* border-color: orange; */
   border-width: 2px;
   margin: 0 auto;
   max-width: 600px;
@@ -66,7 +66,7 @@ button:hover {
   text-align: center;
   font-size: x-large;
   color: #071013;
-  text-rendering: optimizeLegibility;
+  
 }
 
 .form {

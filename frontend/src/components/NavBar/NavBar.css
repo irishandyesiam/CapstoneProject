@@ -9,25 +9,26 @@ li {
 }
 
 .navBar {
-  background-color: #B7999C;
+  background-color: #385F71;
   box-shadow: 4px 2px 5px #071013;
-  color: white;
+  color: #F6EEDF;
   margin-bottom: 2rem;
   padding: 1.5rem 2rem;
   font-size: larger;
 }
 
 .navBar button {
-  background: transparent;
-  border: 1px solid white;
-  color: white;
+  background-color: #385F71;
+  border: 1px solid #F6EEDF;
+  color:#F6EEDF;
   padding: 0.4rem 0.5rem;
   font-size: large;
 
 }
 
 .navBar button:hover {
-  color: #071013;
+  background-color: #2E4162;
+  color: #F6EEDF;
   border: 1px solid #071013;
   cursor: pointer;
 }
