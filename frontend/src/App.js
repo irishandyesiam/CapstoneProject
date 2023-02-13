@@ -89,23 +89,23 @@ function App() {
     }
   }
 
-  async function passedIdNumber(id_number) {
-    console.log("Hopefully right", id_number);
-    let recipe_id = id_number;
-    try{
-        let response = await axios.get(`https://tasty.p.rapidapi.com/recipes/get-more-info`,{
-        params: {id: `${recipe_id}`},
-        headers: {
-          'X-RapidAPI-Key': '07710484e3msh42b10869d913fd2p1180a4jsn6142c9c0fe21',
-          'X-RapidAPI-Host': 'tasty.p.rapidapi.com'
-        }
-          });
-          console.log(response.data)
-          setPassedIngredientsId(response.data);
-      } catch(error){
-        console.log(`ERROR in passedIdNumber EXCEPTION: ${error}`);
-      }
-    };
+  // async function passedIdNumber(id_number) {
+  //   console.log("Hopefully right", id_number);
+  //   let recipe_id = id_number;
+  //   try{
+  //       let response = await axios.get(`https://tasty.p.rapidapi.com/recipes/get-more-info`,{
+  //       params: {id: `${recipe_id}`},
+  //       headers: {
+  //         'X-RapidAPI-Key': '07710484e3msh42b10869d913fd2p1180a4jsn6142c9c0fe21',
+  //         'X-RapidAPI-Host': 'tasty.p.rapidapi.com'
+  //       }
+  //         });
+  //         console.log(response.data)
+  //         setPassedIngredientsId(response.data);
+  //     } catch(error){
+  //       console.log(`ERROR in passedIdNumber EXCEPTION: ${error}`);
+  //     }
+  //   };
   
   async function submittedSearchTerm(search_term){
     console.log("Passed dish", search_term)
@@ -159,7 +159,7 @@ function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/display_recipe" element={<PrivateRoute><RecipeDisplayPage passed_dish_recipe={passed_dish_recipe}  /></PrivateRoute>} />
-        <Route path="/inspire" element={<PrivateRoute><InspirePage passedIngredientRecipe={passedIngredientRecipe} passed_ing_recipe={passed_ing_recipe} ingredient_search={ingredient_search} passedIdNumber={passedIdNumber} /></PrivateRoute>} />
+        <Route path="/inspire" element={<PrivateRoute><InspirePage passedIngredientRecipe={passedIngredientRecipe} passed_ing_recipe={passed_ing_recipe} ingredient_search={ingredient_search} /></PrivateRoute>} />
         <Route path="/search_results_display" element={<SearchResultsDisplay  passedDishRecipe={passedDishRecipe} dish_search={dish_search} ingredient_search={ingredient_search}/>} />
         <Route path="/meal_planner" element={<PrivateRoute><MealPlan /></PrivateRoute>} />
         <Route path="/shopping_list" element={<PrivateRoute><ShoppingList /></PrivateRoute>} />
