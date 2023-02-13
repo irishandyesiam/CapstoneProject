@@ -11,13 +11,13 @@ const Navbar = () => {
     <div className="navBar">
       <ul>
         <li className="brand">
-          <Link to="/" style={{ textDecoration: "none", color: "white" }}>
+          <Link to="/" style={{ textDecoration: "none"}}>
             <b>Reci-Matic</b>
           </Link>
         </li>
-        <Link to="meal_planner/">My Meal Plan</Link>
-        <Link to="shopping_list/">My Shopping List</Link>
-        <Link to="favorites/">Favorites</Link>
+        <Link to="meal_planner/" style={{ textDecoration: "none"}}>My Meal Plan</Link>
+        <Link to="shopping_list/" style={{ textDecoration: "none"}}>My Shopping List</Link>
+        <Link to="favorites/" style={{ textDecoration: "none"}}>Favorites</Link>
         <li>
           {user ? (
             <button onClick={logoutUser}>Logout</button>

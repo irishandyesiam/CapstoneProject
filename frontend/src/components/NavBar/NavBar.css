@@ -11,7 +11,6 @@ li {
 .navBar {
   background-color: #385F71;
   box-shadow: 4px 2px 5px #071013;
-  color: #F6EEDF;
   margin-bottom: 2rem;
   padding: 1.5rem 2rem;
   font-size: larger;
@@ -41,3 +40,21 @@ li {
 		1px 1px 0 #071013;
 }
 
+a {
+  color: #F6EEDF;
+    text-shadow: 
+		1px -1px 0 #071013,
+		1px 1px 0 #071013;
+}
+
+/* a:hover {
+  font-size: 1.30rem;
+}
+
+b {
+  color: #F6EEDF
+} */
+
+/* b.hover {
+  font-size: 3.25rem;
+} */
