@@ -9,8 +9,8 @@ li {
 }
 
 .navBar {
-  background-color: #94849B;
-  box-shadow: 4px 2px 5px #2E3532;
+  background-color: #B7999C;
+  box-shadow: 4px 2px 5px #071013;
   color: white;
   margin-bottom: 2rem;
   padding: 1.5rem 2rem;
@@ -27,8 +27,8 @@ li {
 }
 
 .navBar button:hover {
-  color: #2E3532;
-  border: 1px solid #2E3532;
+  color: #071013;
+  border: 1px solid #071013;
   cursor: pointer;
 }
 
@@ -36,7 +36,7 @@ li {
   cursor: pointer;
   font-size: 3rem;
   text-shadow: 
-		1px -1px 0 #2E3532,
-		1px 1px 0 #2E3532;
+		1px -1px 0 #071013,
+		1px 1px 0 #071013;
 }
 
