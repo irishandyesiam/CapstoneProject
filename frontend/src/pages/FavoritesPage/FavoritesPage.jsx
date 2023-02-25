@@ -91,17 +91,20 @@ const DisplayFavorites = (props) => {
   }
 
 return (
-      <div className="container">
+      <div className="img-gallery">
         {favoriteRecipes &&
           favoriteRecipes.map((element) => (
             <p key={element.id}><br></br>
-         
-              <li onClick={() => navigate(`/favorite_recipe_display/${element.id}`)}> {element.recipe.name}  </li>
+            <div className="img-box">
+              
               <img
                 className="img"
                 src={element.recipe.image}
                 alt={"unavailable"}
               />
+              <h3 onClick={() => navigate(`/favorite_recipe_display/${element.id}`)}> {element.recipe.name}  </h3>
+              </div>
+              
               {/* <p> {recipes.comments} </p>
               <CommentsForm addNewComment={addNewComment} /> */}
             </p>
