@@ -101,8 +101,9 @@ return (
                 className="img"
                 src={element.recipe.image}
                 alt={"unavailable"}
+                onClick={() => navigate(`/favorite_recipe_display/${element.id}`)}
               />
-              <h3 onClick={() => navigate(`/favorite_recipe_display/${element.id}`)}> {element.recipe.name}  </h3>
+              <h3 className="name" > {element.recipe.name}  </h3>
               </div>
               
               {/* <p> {recipes.comments} </p>
