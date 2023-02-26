@@ -71,7 +71,7 @@ const MealPlan = () => {
     <div className="container">
       <h1>{user.username} Meal Plan</h1>
       {recipes &&
-        recipes.map((recipes) => <p key={recipes.id}onClick={() => navigate(`/favorite_recipe_display/${recipes.id}`)}>{recipes.recipe.name}<button type="submit" onClick={() => addToFavorites(recipes)}>Add to Favorite</button></p>)}
+        recipes.map((recipes) => <p key={recipes.id} className="link" onClick={() => navigate(`/favorite_recipe_display/${recipes.id}`)}>{recipes.recipe.name}<button type="submit" onClick={() => addToFavorites(recipes)}>Add to Favorite</button></p>)}
         
     </div>
   );
