@@ -4,6 +4,7 @@ import useAuth from "../../hooks/useAuth";
 import axios from "axios";
 import "./MealPlan";
 import "./MealPlan.css";
+import { useNavigate } from "react-router-dom";
 
 const MealPlan = () => {
   const [user, token] = useAuth();
@@ -64,11 +65,13 @@ const MealPlan = () => {
       }
     }
 
+    let navigate = useNavigate();
+
   return (
     <div className="container">
       <h1>{user.username} Meal Plan</h1>
       {recipes &&
-        recipes.map((recipes) => <p key={recipes.id}>{recipes.recipe.name}<button type="submit" onClick={() => addToFavorites(recipes)}>Add to Favorite</button></p>)}
+        recipes.map((recipes) => <p key={recipes.id}onClick={() => navigate(`/favorite_recipe_display/${recipes.id}`)}>{recipes.recipe.name}<button type="submit" onClick={() => addToFavorites(recipes)}>Add to Favorite</button></p>)}
         
     </div>
   );
