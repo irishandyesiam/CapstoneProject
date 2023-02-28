@@ -29,7 +29,7 @@ const FavoriteRecipeDisplay = (favorite_recipe) => {
     let comments = newComment.comments;
     let rating = 5; 
     // TODO: Change recipe_id value back to dynamically generated id
-    let recipe_id = 20;
+    let recipe_id = listFavoriteRecipe.recipe.id;
 
     let putComment = {
       rating: rating,
