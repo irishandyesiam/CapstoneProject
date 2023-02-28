@@ -8,3 +8,6 @@ class FavoriteSerializer(serializers.ModelSerializer):
         depth = 1
 
     recipe_id = serializers.IntegerField(write_only=True)
+
+
+    

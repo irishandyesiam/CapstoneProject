@@ -27,12 +27,12 @@ const FavoriteRecipeDisplay = (favorite_recipe) => {
   {
     console.log("Input form comment", newComment);
     let comments = newComment.comments;
-    let rating = 5; 
+    // let rating = 5; 
     // TODO: Change recipe_id value back to dynamically generated id
     let recipe_id = listFavoriteRecipe.recipe.id;
 
     let putComment = {
-      rating: rating,
+      // rating: rating,
       comments: comments,
       recipe_id: recipe_id
     };
@@ -40,7 +40,8 @@ const FavoriteRecipeDisplay = (favorite_recipe) => {
   
     try {
       let response = await axios.post(
-        `http://127.0.0.1:8000/api/favorite_recipe/comment/`,
+        // Updated url endpoint to target comment table. Not updating foreign key.
+        `http://127.0.0.1:8000/api/comment/`,
         putComment,
         {
           headers: {
