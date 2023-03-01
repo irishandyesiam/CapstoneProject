@@ -10,6 +10,7 @@ const GetComment = () => {
 useEffect (() => {
     const fetchComments = async () => {
         try {
+            // New url end point to get by id.
             let response = await axios.get("http://127.0.0.1:8000/api/comment/", {
             headers: {
                 Authorization: "Bearer " + token,

@@ -33,7 +33,7 @@ const FavoriteRecipeDisplay = (favorite_recipe) => {
 
     let putComment = {
       // rating: rating,
-      comments: comments,
+      text: comments,
       recipe_id: recipe_id
     };
     console.log("Post Comment", putComment);
