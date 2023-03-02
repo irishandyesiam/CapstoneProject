@@ -5,6 +5,7 @@ import axios from "axios";
 import CommentsForm from "../../components/CommentsForm/CommentsForm"
 import { useParams } from "react-router-dom";
 import "./FavoriteRecipeDisplay.css";
+import Comments from "../../components/Comments/Comments"
 
 
 const FavoriteRecipeDisplay = (favorite_recipe) => {
@@ -133,6 +134,7 @@ const FavoriteRecipeDisplay = (favorite_recipe) => {
         ))} */}
       </div>
       <div><CommentsForm addNewComment={addNewComment} /></div>
+      <div><Comments/></div>
     </div>
     
   );
