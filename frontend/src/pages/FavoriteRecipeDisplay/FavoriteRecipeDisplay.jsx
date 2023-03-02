@@ -134,7 +134,7 @@ const FavoriteRecipeDisplay = (favorite_recipe) => {
         ))} */}
       </div>
       <div><CommentsForm addNewComment={addNewComment} /></div>
-      <div><Comments/></div>
+      <div><Comments listFavoriteRecipe={listFavoriteRecipe}/></div>
     </div>
     
   );

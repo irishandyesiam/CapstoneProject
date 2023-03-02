@@ -3,7 +3,8 @@ import {useEffect, useState} from 'react';
 import useAuth from '../../hooks/useAuth';
 import axios from 'axios';
 
-const GetComment = () => {
+const GetComment = (props) => {
+console.log("Comments component props",props.recipes.id)
     const [user, token] = useAuth();
     const [comments, setComments] = useState([]);
 
@@ -28,7 +29,7 @@ return (
     <div>
     {/* Display comments by flitering through by FK */}
     Users Comments
-    {comments && comments.map((e) => (
+    {comments && comments.filter((e) => e.recipes.id.includes(props.recipes.id)(
         <li>{e.text}</li>
     ))}
 
