@@ -30,12 +30,12 @@ return (
     {/* Display comments by flitering through by FK */}
     Users Comments
     {/* Try filtering through comments in function before return */}
-    {comments && comments.filter(((e => e.recipe.id === props.listFavoriteRecipe.recipe.id).map(((e) => (
+    {/* {comments && comments.filter(((e => e.recipe.id === props.listFavoriteRecipe.recipe.id).map(((e) => (
         <li>{e.text}</li>
-    )))))}
-    {/* {comments && comments.map((e) =>(
-        <li key={e}>{e.text}</li>
-    ))} */}
+    )))))} */}
+    {comments && comments.map((e) =>(
+        <li key={e.id}>{e.text}</li>
+    ))}
     </div>
 )
 }
