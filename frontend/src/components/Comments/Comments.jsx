@@ -4,7 +4,7 @@ import useAuth from '../../hooks/useAuth';
 import axios from 'axios';
 
 const GetComment = (props) => {
-console.log("Comments component props",props.recipes.id)
+console.log("Comments component props",props.listFavoriteRecipe)
     const [user, token] = useAuth();
     const [comments, setComments] = useState([]);
 
@@ -29,10 +29,13 @@ return (
     <div>
     {/* Display comments by flitering through by FK */}
     Users Comments
-    {comments && comments.filter((e) => e.recipes.id.includes(props.recipes.id)(
+    {/* Try filtering through comments in function before return */}
+    {comments && comments.filter(((e => e.recipe.id === props.listFavoriteRecipe.recipe.id).map(((e) => (
         <li>{e.text}</li>
-    ))}
-
+    )))))}
+    {/* {comments && comments.map((e) =>(
+        <li key={e}>{e.text}</li>
+    ))} */}
     </div>
 )
 }
