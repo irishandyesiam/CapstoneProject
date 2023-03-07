@@ -31,7 +31,6 @@ function App() {
   const [recipes, setRecipes] = useState([]);
   // const [favorite_id, setFavoriteId] = useState([]);
   const [favorite_recipe, setFavoriteRecipe] = useState({})
-  const [dish_search, setDishes] = useState ([]);
   const [passed_dish_recipe, setPassedDishRecipe] = useState([]);
   const [ingredient_search, setIngredientSearch] = useState([]);
   const [passed_ing_recipe, setPassedIngredientRecipe] = useState([]);
@@ -108,21 +107,6 @@ function App() {
   //     }
   //   };
   
-  async function submittedSearchTerm(search_term){
-    console.log("Passed dish", search_term)
-    try{
-      let response = await axios.get(`https://recipesapi2.p.rapidapi.com/recipes/${search_term}/`,{
-        params: {maxRecipes: '5'},
-        headers: {
-          'X-RapidAPI-Key': '07710484e3msh42b10869d913fd2p1180a4jsn6142c9c0fe21',
-          'X-RapidAPI-Host': 'recipesapi2.p.rapidapi.com'
-        }
-        });
-        setDishes(response.data.data);
-    } catch(error){
-      console.log(`ERROR in submittedSearchTerm EXCEPTION: ${error}`);
-    }
-  };
 
   function passedDishRecipe(recipe){
     console.log("FUNCTION IN APP.JS THAT RECIEVES RECIPE: ", recipe)
@@ -146,7 +130,7 @@ function App() {
     <div>
       <Navbar />
       <div className = "searchbar_container">
-      <SearchBar submittedSearchTerm={submittedSearchTerm} submittedIngredientTerm={submittedIngredientTerm}/>
+      <SearchBar submittedIngredientTerm={submittedIngredientTerm}/>
       </div>
       <Routes>
         <Route
@@ -161,7 +145,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/display_recipe" element={<PrivateRoute><RecipeDisplayPage passed_dish_recipe={passed_dish_recipe}  /></PrivateRoute>} />
         <Route path="/inspire" element={<PrivateRoute><InspirePage passedIngredientRecipe={passedIngredientRecipe} passed_ing_recipe={passed_ing_recipe} ingredient_search={ingredient_search} /></PrivateRoute>} />
-        <Route path="/search_results_display" element={<SearchResultsDisplay  passedDishRecipe={passedDishRecipe} dish_search={dish_search} ingredient_search={ingredient_search}/>} />
+        <Route path="/search_results_display" element={<SearchResultsDisplay  passedDishRecipe={passedDishRecipe} ingredient_search={ingredient_search}/>} />
         <Route path="/meal_planner" element={<PrivateRoute><MealPlan /></PrivateRoute>} />
         <Route path="/shopping_list" element={<PrivateRoute><ShoppingList /></PrivateRoute>} />
         <Route path="/inspire_display" element={<PrivateRoute><IngredientRecipePage passed_ing_recipe={passed_ing_recipe} /></PrivateRoute>} />

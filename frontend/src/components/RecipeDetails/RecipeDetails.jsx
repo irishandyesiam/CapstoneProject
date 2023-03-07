@@ -1,3 +1,5 @@
+// Information details to toggle between showing and not showing ingredients and instructions.
+
 import React from 'react';
 import { useState } from 'react';
 

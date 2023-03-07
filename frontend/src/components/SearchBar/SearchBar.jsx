@@ -23,9 +23,11 @@ const SearchBar = (props) => {
     };
 
     return (
+    // Unused searchbar for now defunct 3rd Party API
         <div class="container"><><form className='searchbar' onSubmit={handleDishSubmit}>
             {/* <input type='text' value={search_term} placeholder="...search by dish" onChange={(event) => setSearchTerm(event.target.value)} /> */}
             {/* <button type='submit' value="Search">Dish Search</button> */}
+    {/*Current search bar: TO DO review Tasty API Endpoints to expand on search methods for users  */}
         </form><form className='searchbar' onSubmit={handleIngredientSubmit}>
                 <input type='text' value={ingredient_term} placeholder="...enter ingredient or dish" onChange={(event) => setIngredientTerm(event.target.value)} />
                 <button type='submit' value="Search">Search</button>

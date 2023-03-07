@@ -95,16 +95,13 @@ const FavoriteRecipeDisplay = (favorite_recipe) => {
     let instructions_list = JSON.parse(listFavoriteRecipe.recipe.instructions)
     return instructions_list
   }
-  // let parseIngredients = JSON.parse(favorite_recipe.favorite_recipe.recipe.ingredients)
-  // console.log(parseIngredients())
-  // let instructionsParse = JSON.parse(favorite_recipe.favorite_recipe.recipe.ingredients)
-  // console.log(recipeInstructionParse())
 
   return (
     
     <div>
-      {/* {listFavoriteRecipe.length > 0 ? listFavoriteRecipe.map(recipe => <p>{recipe.name}</p>) : null} */}
-      {/* {someObject && <p>{someObject.someProperty}</p>} */}
+      {/* Examples of conditional rending */}
+          {/* {listFavoriteRecipe.length > 0 ? listFavoriteRecipe.map(recipe => <p>{recipe.name}</p>) : null} */}
+          {/* {someObject && <p>{someObject.someProperty}</p>} */}
       {listFavoriteRecipe && 
         <div>
           <img

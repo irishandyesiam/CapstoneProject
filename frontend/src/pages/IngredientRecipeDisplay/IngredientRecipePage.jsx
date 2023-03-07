@@ -66,7 +66,6 @@ const IngredientRecipeDisplay = (recipe) => {
       name: name,
     };
     console.log(revisedRecipe);
-    // debugger
     try {
       let response = await axios.post(
         `http://127.0.0.1:8000/api/recipes/recipe-detail/`,

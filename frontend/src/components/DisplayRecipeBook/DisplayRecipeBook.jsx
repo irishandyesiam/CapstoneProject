@@ -6,6 +6,7 @@ import RecipeDetails from '../RecipeDetails/RecipeDetails';
 const DisplayRecipeBook = (props) => {
     const [user, token] = useAuth();
     const [userRecipes, setUserRecipes] = useState([]);
+    // State for toggle open recipe details
     const [toggle, setToggle] = useState(true);
 
 useEffect(() => {
