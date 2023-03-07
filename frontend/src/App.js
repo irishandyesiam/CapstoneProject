@@ -7,18 +7,19 @@ import axios from "axios";
 import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
-import RecipeDisplayPage from "./pages/RecipeDisplayPage/RecipeDisplayPage";
 import MealPlan from "./pages/MealPlanPage/MealPlan";
 import ShoppingList from "./pages/ShoppingList/ShoppingList";
 import InspirePage from "./pages/InspirePage/InspirePage";
 import IngredientRecipePage from "./pages/IngredientRecipeDisplay/IngredientRecipePage";
 import FavoritesPage from "./pages/FavoritesPage/FavoritesPage";
 import FavoriteRecipeDisplay from "./pages/FavoriteRecipeDisplay/FavoriteRecipeDisplay";
+// import RecipeDisplayPage from "./pages/RecipeDisplayPage/RecipeDisplayPage";
 
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
-import Footer from "./components/Footer/Footer";
 import SearchBar from "./components/SearchBar/SearchBar";
+// import Footer from "./components/Footer/Footer";
+// SearchResultsDisplay has CSS styling for tiles on "inspire" page. Change to component.
 import SearchResultsDisplay from "./pages/SearchResultsDisplay/SearchResultsDisplay";
 
 // Util Imports
@@ -29,13 +30,13 @@ import useAuth from "./hooks/useAuth";
 function App() {
 
   const [recipes, setRecipes] = useState([]);
-  // const [favorite_id, setFavoriteId] = useState([]);
   const [favorite_recipe, setFavoriteRecipe] = useState({})
   const [passed_dish_recipe, setPassedDishRecipe] = useState([]);
   const [ingredient_search, setIngredientSearch] = useState([]);
   const [passed_ing_recipe, setPassedIngredientRecipe] = useState([]);
-  const [passed_ing_id, setPassedIngredientsId] = useState([]);
   const [user, token] = useAuth();
+  // const [passed_ing_id, setPassedIngredientsId] = useState([]);
+  // // const [favorite_id, setFavoriteId] = useState([]);
 
 
   useEffect(() => {
@@ -143,9 +144,9 @@ function App() {
         />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/display_recipe" element={<PrivateRoute><RecipeDisplayPage passed_dish_recipe={passed_dish_recipe}  /></PrivateRoute>} />
+        {/* <Route path="/display_recipe" element={<PrivateRoute><RecipeDisplayPage passed_dish_recipe={passed_dish_recipe}  /></PrivateRoute>} /> */}
         <Route path="/inspire" element={<PrivateRoute><InspirePage passedIngredientRecipe={passedIngredientRecipe} passed_ing_recipe={passed_ing_recipe} ingredient_search={ingredient_search} /></PrivateRoute>} />
-        <Route path="/search_results_display" element={<SearchResultsDisplay  passedDishRecipe={passedDishRecipe} ingredient_search={ingredient_search}/>} />
+        {/* <Route path="/search_results_display" element={<SearchResultsDisplay  passedDishRecipe={passedDishRecipe} ingredient_search={ingredient_search}/>} /> */}
         <Route path="/meal_planner" element={<PrivateRoute><MealPlan /></PrivateRoute>} />
         <Route path="/shopping_list" element={<PrivateRoute><ShoppingList /></PrivateRoute>} />
         <Route path="/inspire_display" element={<PrivateRoute><IngredientRecipePage passed_ing_recipe={passed_ing_recipe} /></PrivateRoute>} />
