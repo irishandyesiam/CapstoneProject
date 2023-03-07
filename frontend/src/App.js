@@ -4,6 +4,7 @@ import "./App.css";
 import axios from "axios";
 
 // Pages Imports
+// Review pages to change to component.
 import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
@@ -19,7 +20,7 @@ import FavoriteRecipeDisplay from "./pages/FavoriteRecipeDisplay/FavoriteRecipeD
 import Navbar from "./components/NavBar/NavBar";
 import SearchBar from "./components/SearchBar/SearchBar";
 // import Footer from "./components/Footer/Footer";
-// SearchResultsDisplay has CSS styling for tiles on "inspire" page. Change to component.
+// SearchResultsDisplay has CSS styling for tiles on "inspire" page. Currently '.page' must change to component.
 import SearchResultsDisplay from "./pages/SearchResultsDisplay/SearchResultsDisplay";
 
 // Util Imports
@@ -35,7 +36,7 @@ function App() {
   const [ingredient_search, setIngredientSearch] = useState([]);
   const [passed_ing_recipe, setPassedIngredientRecipe] = useState([]);
   const [user, token] = useAuth();
-  // const [passed_ing_id, setPassedIngredientsId] = useState([]);
+  const [passed_ing_id, setPassedIngredientsId] = useState([]);
   // // const [favorite_id, setFavoriteId] = useState([]);
 
 
@@ -90,23 +91,23 @@ function App() {
   }
 
   // Move the 'get-more-info' api request call to BACKEND
-  // async function passedIdNumber(id_number) {
-  //   console.log("Hopefully right", id_number);
-  //   let recipe_id = id_number;
-  //   try{
-  //       let response = await axios.get(`https://tasty.p.rapidapi.com/recipes/get-more-info`,{
-  //       params: {id: `${recipe_id}`},
-  //       headers: {
-  //         'X-RapidAPI-Key': '07710484e3msh42b10869d913fd2p1180a4jsn6142c9c0fe21',
-  //         'X-RapidAPI-Host': 'tasty.p.rapidapi.com'
-  //       }
-  //         });
-  //         console.log(response.data)
-  //         setPassedIngredientsId(response.data);
-  //     } catch(error){
-  //       console.log(`ERROR in passedIdNumber EXCEPTION: ${error}`);
-  //     }
-  //   };
+  async function passedIdNumber(id_number) {
+    console.log("Hopefully right", id_number);
+    let recipe_id = id_number;
+    try{
+        let response = await axios.get(`https://tasty.p.rapidapi.com/recipes/get-more-info`,{
+        params: {id: `${recipe_id}`},
+        headers: {
+          'X-RapidAPI-Key': '07710484e3msh42b10869d913fd2p1180a4jsn6142c9c0fe21',
+          'X-RapidAPI-Host': 'tasty.p.rapidapi.com'
+        }
+          });
+          console.log(response.data)
+          setPassedIngredientsId(response.data);
+      } catch(error){
+        console.log(`ERROR in passedIdNumber EXCEPTION: ${error}`);
+      }
+    };
   
 
   function passedDishRecipe(recipe){

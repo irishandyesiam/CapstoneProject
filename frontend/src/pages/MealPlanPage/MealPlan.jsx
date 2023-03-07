@@ -65,13 +65,15 @@ const MealPlan = () => {
       }
     }
 
-    let navigate = useNavigate();
-
+    // let navigate = useNavigate();
+console.log(recipes)
   return (
     <div className="container">
       <h1>{user.username} Meal Plan</h1>
+      {/* navigate currently using PK of meal plan for Param not the recipe FK */}
+      {/* onClick={() => navigate(`/favorite_recipe_display/${recipes.id}`)} */}
       {recipes &&
-        recipes.map((recipes) => <p key={recipes.id} className="link" onClick={() => navigate(`/favorite_recipe_display/${recipes.id}`)}>{recipes.recipe.name}<button type="submit" onClick={() => addToFavorites(recipes)}>Add to Favorite</button></p>)}
+        recipes.map((recipes) => <p key={recipes.id} className="link" >{recipes.recipe.name}<button type="submit" onClick={() => addToFavorites(recipes)}>Add to Favorite</button></p>)}
         
     </div>
   );
