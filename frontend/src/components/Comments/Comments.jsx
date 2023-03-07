@@ -33,9 +33,12 @@ return (
     {/* {comments && comments.filter(((e => e.recipe.id === props.listFavoriteRecipe.recipe.id).map(((e) => (
         <li>{e.text}</li>
     )))))} */}
-    {comments && comments.map((e) =>(
-        <li key={e.id}>{e.text}</li>
-    ))}
+    {/* {comments && comments.map(comment =>
+         {return <div key={comment.id}>{comment.text}</div>}
+    )} */}
+    {comments && comments.filter((comment) => comment.recipe.id === props.listFavoriteRecipe.recipe.id).map((comment) => {
+        return <div key={comment.text}>{comment.text}</div>
+    })}
     </div>
 )
 }
