@@ -13,7 +13,8 @@ const FavoriteRecipeDisplay = (favorite_recipe) => {
   const [addedComment, setNewComment] = useState([]);
   const [listFavoriteRecipe, setFavoriteRecipes] = useState(null);
   const [filteredByIdFavorite, setFilterById] = useState([]);
-  const [someObject, setSomeObject] = useState(null)
+  // example state
+  // const [someObject, setSomeObject] = useState(null)
   const fav_rec = useParams()
   console.log("Favorite Recipe Display param, line 16",fav_rec)
   useEffect(() => {

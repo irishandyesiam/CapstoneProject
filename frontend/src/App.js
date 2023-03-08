@@ -20,8 +20,7 @@ import FavoriteRecipeDisplay from "./pages/FavoriteRecipeDisplay/FavoriteRecipeD
 import Navbar from "./components/NavBar/NavBar";
 import SearchBar from "./components/SearchBar/SearchBar";
 // import Footer from "./components/Footer/Footer";
-// SearchResultsDisplay has CSS styling for tiles on "inspire" page. Currently '.page' must change to component.
-import SearchResultsDisplay from "./pages/SearchResultsDisplay/SearchResultsDisplay";
+// import SearchResultsDisplay from "./pages/SearchResultsDisplay/SearchResultsDisplay";
 
 // Util Imports
 import PrivateRoute from "./utils/PrivateRoute";
@@ -110,11 +109,11 @@ function App() {
     };
   
 
-  function passedDishRecipe(recipe){
-    console.log("FUNCTION IN APP.JS THAT RECIEVES RECIPE: ", recipe)
-    let response = recipe
-    setPassedDishRecipe(response)
-  };
+  // function passedDishRecipe(recipe){
+  //   console.log("FUNCTION IN APP.JS THAT RECIEVES RECIPE: ", recipe)
+  //   let response = recipe
+  //   setPassedDishRecipe(response)
+  // };
 
   function passedIngredientRecipe(ing_recipe){
     console.log(ing_recipe.id)

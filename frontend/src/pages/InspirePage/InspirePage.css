@@ -1,4 +1,34 @@
-.img {
-    width: 25%;
+.img-gallery {
+    margin: 10px;
+    padding: 10px;
+    float: left;
+    column-count: 4;
+    column-gap: 50px;
+    justify-items: center;
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.img-box {
+    background-color: #F6EEDF;
+    margin: 20px;
+    padding: 5px;
+    width: 180px;
     height: auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 #071013;
+    -webkit-column-break-inside: avoid;
+   
+}
+
+.img {
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+}
+
+.name {
+    padding: 15px;
+    text-align: center;
 }

@@ -6,7 +6,6 @@ const SearchBar = (props) => {
 
     let navigate = useNavigate();
 
-    const [search_term, setSearchTerm] = useState('');
     const [ingredient_term, setIngredientTerm] = useState('');
 
     function handleIngredientSubmit(event) {
@@ -15,23 +14,13 @@ const SearchBar = (props) => {
         navigate("/inspire")
     }
 
-    function handleDishSubmit(event) {
-        event.preventDefault();
-        console.log("The submitted search term is", search_term)
-        props.submittedSearchTerm(search_term)
-        navigate("/search_results_display")
-    };
 
     return (
-    // Unused searchbar for now defunct 3rd Party API
-        <div class="container"><><form className='searchbar' onSubmit={handleDishSubmit}>
-            {/* <input type='text' value={search_term} placeholder="...search by dish" onChange={(event) => setSearchTerm(event.target.value)} /> */}
-            {/* <button type='submit' value="Search">Dish Search</button> */}
-    {/*Current search bar: TO DO review Tasty API Endpoints to expand on search methods for users  */}
-        </form><form className='searchbar' onSubmit={handleIngredientSubmit}>
+        <div class="container">
+        <form className='searchbar' onSubmit={handleIngredientSubmit}>
                 <input type='text' value={ingredient_term} placeholder="...enter ingredient or dish" onChange={(event) => setIngredientTerm(event.target.value)} />
                 <button type='submit' value="Search">Search</button>
-            </form></></div>
+            </form></div>
     );
 }
  

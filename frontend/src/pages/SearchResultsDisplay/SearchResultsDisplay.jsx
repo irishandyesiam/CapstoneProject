@@ -12,6 +12,7 @@ const SearchResultsDisplay = (props) => {
 
   function handleDishOnClick(recipe) {
     console.log(recipe)
+    // What is this doing??
     props.passedDishRecipe(recipe)
     navigate('/display_recipe')
   }
