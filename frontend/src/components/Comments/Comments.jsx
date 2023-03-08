@@ -22,7 +22,7 @@ useEffect (() => {
     console.log("fetchComments ", error.response.data)
 }
 }
-fetchComments();}, [token]);
+fetchComments();}, [comments]);
 
 console.log("Comment component state", comments)
 return (

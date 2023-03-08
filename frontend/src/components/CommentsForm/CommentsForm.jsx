@@ -1,10 +1,6 @@
-import React from 'react';
-import {useState} from 'react';
-
+import React, {useState} from 'react';
 
 const AddComment = (props) => {
-
-
 
 const [comment, setComment] = useState([]);
 
