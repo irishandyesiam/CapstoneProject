@@ -4,7 +4,6 @@ import {useEffect, useState} from 'react';
 import useAuth from '../../hooks/useAuth';
 
 const GetComment = (props) => {
-console.log("Comments component props",props.listFavoriteRecipe)
     const [user, token] = useAuth();
     const [comments, setComments] = useState([]);
 
