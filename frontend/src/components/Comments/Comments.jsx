@@ -4,25 +4,14 @@ import {useEffect, useState} from 'react';
 import useAuth from '../../hooks/useAuth';
 
 const GetComment = (props) => {
+    console.log(props);
     const [user, token] = useAuth();
-    const [comments, setComments] = useState([]);
+
 
 
 // Move to FavoriteRecipeDisplay page. 
 useEffect (() => {
-    const fetchComments = async () => {
-        try {
-            let response = await axios.get("http://127.0.0.1:8000/api/comment/", {
-            headers: {
-                Authorization: "Bearer " + token,
-            },
-            });
-    setComments(response.data);
-}   catch (error){
-    console.log("fetchComments error", error.response.data)
-}
-}
-fetchComments();}, []);
+}, []);
 
 
 return (

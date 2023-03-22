@@ -11,6 +11,7 @@ import "./FavoriteRecipeDisplay.css";
 const FavoriteRecipeDisplay = (favorite_recipe) => {
   const [user, token] = useAuth();
   const [listFavoriteRecipe, setFavoriteRecipes] = useState(null);
+  const [comments, setComments] = useState([]);
   const fav_rec = useParams()
   
   useEffect(() => {
@@ -62,6 +63,20 @@ const FavoriteRecipeDisplay = (favorite_recipe) => {
     }
   }
 
+  const fetchComments = async () => {
+    try {
+        let response = await axios.get("http://127.0.0.1:8000/api/comment/", {
+        headers: {
+            Authorization: "Bearer " + token,
+        },
+        });
+setComments(response.data);
+}   catch (error){
+console.log("fetchComments error", error.response.data)
+}
+}
+fetchComments();
+
   function parseIngredients() {
     let ingredients_list = JSON.parse(listFavoriteRecipe.recipe.ingredients)
     return ingredients_list
@@ -94,7 +109,7 @@ const FavoriteRecipeDisplay = (favorite_recipe) => {
       }
       <div><CommentsForm addNewComment={addNewComment} /></div>
       <h1>User Comments</h1>
-      <div><Comments listFavoriteRecipe={listFavoriteRecipe}/></div>
+      <div><Comments listFavoriteRecipe={listFavoriteRecipe} comments={comments}/></div>
     </div>
     
   );
