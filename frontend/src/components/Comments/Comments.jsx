@@ -8,7 +8,7 @@ const GetComment = (props) => {
     const [comments, setComments] = useState([]);
 
 
-
+// Move to FavoriteRecipeDisplay page. 
 useEffect (() => {
     const fetchComments = async () => {
         try {
