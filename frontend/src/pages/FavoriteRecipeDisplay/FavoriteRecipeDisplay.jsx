@@ -114,7 +114,7 @@ const FavoriteRecipeDisplay = (favorite_recipe) => {
         <h1>User Comments</h1>
           <div>
           {console.log("Comments components state re-render", comments)}
-          {comments && comments.map((comment) => {
+          {comments && comments.filter((comment) => comment.recipe.id === listFavoriteRecipe.recipe.id).map((comment) => {
             return (
             <div key={comment.text}>{comment.text}</div>
             )
