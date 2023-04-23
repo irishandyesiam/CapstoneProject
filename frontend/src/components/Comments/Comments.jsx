@@ -14,16 +14,16 @@ useEffect (() => {
 }, []);
 
 
-return (
-    <div>
-    {console.log("Comments components state re-render", comments)}
-    {comments && comments.filter((comment) => comment.recipe.id === props.listFavoriteRecipe.recipe.id).map((comment) => {
-        return (
-        <div key={comment.text}>{comment.text}</div>
-        )
-    })}
-    </div>
-)
+// return (
+//     <div>
+//     {console.log("Comments components state re-render", comments)}
+//     {comments && comments.filter((comment) => comment.recipe.id === props.listFavoriteRecipe.recipe.id).map((comment) => {
+//         return (
+//         <div key={comment.text}>{comment.text}</div>
+//         )
+//     })}
+//     </div>
+// )
 }
 
 export default GetComment;

@@ -16,7 +16,6 @@ const [item, setItem] = useState([]);
         items: item,
     };
     props.addNewItem(newItem)
-
   }
 
 return (
