@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'favorite_recipe',
     'shopping_list',
     'comment',
+    'django_extensions'
 ]
 
 MIDDLEWARE = [
