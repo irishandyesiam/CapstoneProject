@@ -11,11 +11,13 @@ import "./FavoriteRecipeDisplay.css";
 const FavoriteRecipeDisplay = (favorite_recipe) => {
   const [user, token] = useAuth();
   const [listFavoriteRecipe, setFavoriteRecipes] = useState(null);
+  const [comments, setComments] = useState([]);
   const fav_rec = useParams()
   
   useEffect(() => {
     fetchFavorites();
     addNewComment();
+    fetchComments();
   }, []);
   
 
@@ -50,7 +52,7 @@ const FavoriteRecipeDisplay = (favorite_recipe) => {
 
   async function fetchFavorites(){
     try{
-      console.log("Line 59 FavoriteRecipeDisplay", fav_rec)
+      console.log("FavoriteRecipeDisplay", fav_rec)
     let response = await axios.get(`http://127.0.0.1:8000/api/favorite_recipe/${fav_rec.id}/`,{
       headers: {
         Authorization: "Bearer " + token,
@@ -61,6 +63,22 @@ const FavoriteRecipeDisplay = (favorite_recipe) => {
     console.log(`ERROR in fetchFavorites EXCEPTION: ${ex}`);
     }
   }
+
+  async function fetchComments(){
+    try {
+        let response = await axios.get("http://127.0.0.1:8000/api/comment/", {
+        headers: {
+            Authorization: "Bearer " + token,
+        },
+        });
+        setComments(response.data);
+      } catch (error){
+      console.log("fetchComments error", error.response.data)
+      }
+    } 
+
+  console.log(comments)
+    
 
   function parseIngredients() {
     let ingredients_list = JSON.parse(listFavoriteRecipe.recipe.ingredients)
@@ -93,9 +111,15 @@ const FavoriteRecipeDisplay = (favorite_recipe) => {
         </div>
       }
       <div><CommentsForm addNewComment={addNewComment} /></div>
-      <h1>User Comments</h1>
-      <div><Comments listFavoriteRecipe={listFavoriteRecipe}/></div>
-    </div>
+        <h1>User Comments</h1>
+          <div>
+          {comments && comments.filter((comment) => comment.recipe.id === listFavoriteRecipe.recipe.id).map((comment) => {
+            return (
+            <div key={comment.text}>{comment.text}</div>
+            )
+          })}
+          </div>
+      </div>
     
   );
 };
