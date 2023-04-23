@@ -5,3 +5,4 @@ from authentication.models import User;
 class ShoppingList(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     items = models.CharField(max_length=255)
+    
