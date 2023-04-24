@@ -20,10 +20,16 @@ def shopping_list(request):
             return Response(serializer.data, status=status.HTTP_202_ACCEPTED) 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-@api_view(['DELETE'])
+@api_view(['DELETE', 'PUT'])
 @permission_classes([IsAuthenticated])
 def edit_item(request, pk):
     item = get_object_or_404(ShoppingList.objects.filter(pk=pk))
     if request.method == 'DELETE':
         item.delete()
         return Response(status)
+    elif request.method == 'PUT':
+        serializer = ShoppingListSerializer(item, data =request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
