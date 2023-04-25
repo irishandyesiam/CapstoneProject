@@ -26,7 +26,7 @@ def edit_item(request, pk):
     item = get_object_or_404(ShoppingList.objects.filter(pk=pk))
     if request.method == 'DELETE':
         item.delete()
-        return Response(status)
+        return Response(status=status.HTTP_204_NO_CONTENT)
     elif request.method == 'PUT':
         serializer = ShoppingListSerializer(item, data =request.data)
         if serializer.is_valid():

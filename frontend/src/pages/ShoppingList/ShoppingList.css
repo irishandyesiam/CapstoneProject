@@ -1,3 +1,19 @@
 .button {
     border-radius: 50%;
 }
+
+.shopping-list-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.shopping-list-table td, .shopping-list-table th {
+  border: 1px solid black;
+  padding: 8px;
+  text-align: left;
+}
+
+.shopping-list-table th {
+  background-color: #ddd;
+}
+
