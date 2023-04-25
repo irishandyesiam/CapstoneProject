@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import AddItem from "../../components/AddItem/AddItem";
 
-
 import axios from "axios";
 
 const ShoppingList = () => {
@@ -11,11 +10,6 @@ const ShoppingList = () => {
   const [recipes, setRecipes] = useState([]);
   const [lists, setLists] = useState([]);
  
-  console.log(user)
-  console.log(token)
-  console.log(recipes)
-  
-
   useEffect(() => {
     fetchIngredients();
   }, [lists]);
@@ -33,8 +27,6 @@ const ShoppingList = () => {
       }
     };
     
-  
-
     async function addNewItem(newItem) {
       try {
         let response = await axios.post("http://127.0.0.1:8000/api/shopping_list/", newItem, {
@@ -50,9 +42,7 @@ const ShoppingList = () => {
     
 
     async function handleDelete(el) {
-      console.log(el)
       let json_id = (el.id);
-     
       let response = await axios.delete(`http://127.0.0.1:8000/api/shopping_list/edit_item/${json_id}/`, 
       {
         headers: {
