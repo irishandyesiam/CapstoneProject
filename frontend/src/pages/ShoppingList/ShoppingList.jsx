@@ -9,7 +9,7 @@ import axios from "axios";
 const ShoppingList = () => {
   const [user, token] = useAuth();
   const [recipes, setRecipes] = useState([]);
-  const [key, setKey] = useState(0);
+  const [lists, setLists] = useState([]);
  
   console.log(user)
   console.log(token)
@@ -18,7 +18,7 @@ const ShoppingList = () => {
 
   useEffect(() => {
     fetchIngredients();
-  }, [token, key]);
+  }, [lists]);
   
     const fetchIngredients = async () => {
       try {
@@ -35,32 +35,33 @@ const ShoppingList = () => {
     
   
 
-    async function addNewItem(newItem){
-      let response = await axios.post("http://127.0.0.1:8000/api/shopping_list/", newItem,  {headers: {
-          Authorization: "Bearer " + token,
-        }})
-      if(response.status === 201){
-        setKey((prevKey) => prevKey + 1);
+    async function addNewItem(newItem) {
+      try {
+        let response = await axios.post("http://127.0.0.1:8000/api/shopping_list/", newItem, {
+          headers: {
+            Authorization: "Bearer " + token,
+          }
+        });
+          setLists(response.data);
+      } catch (error) {
+        console.log(error);
       }
-  }
+    }
+    
 
     async function handleDelete(el) {
       console.log(el)
       let json_id = (el.id);
-      let item = {
-        id : el.id,
-        items : el.items,
-        quantity: el.quantity,
-        unit: el.unit
-      }
-      let response = await axios.delete(`http://127.0.0.1:8000/api/shopping_list/edit_item/${json_id}/`, item,
+     
+      let response = await axios.delete(`http://127.0.0.1:8000/api/shopping_list/edit_item/${json_id}/`, 
       {
         headers: {
           Authorization: "Bearer " + token,
         }})
-        console.log(response.status)
-        setKey((prevKey) => prevKey + 1);
+        console.log(response.status);
+        fetchIngredients();
     }
+
   return (
 <div className="container">
   <h1>Shopping list for {user.username}!</h1>
