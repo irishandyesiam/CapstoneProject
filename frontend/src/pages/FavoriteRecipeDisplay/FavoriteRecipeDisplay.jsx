@@ -12,6 +12,7 @@ const FavoriteRecipeDisplay = (favorite_recipe) => {
   const [user, token] = useAuth();
   const [listFavoriteRecipe, setFavoriteRecipes] = useState(null);
   const [comments, setComments] = useState([]);
+  const [getComments, setGetComments] = useState([]);
   const fav_rec = useParams()
   
   useEffect(() => {
@@ -19,6 +20,9 @@ const FavoriteRecipeDisplay = (favorite_recipe) => {
     fetchComments();
   }, []);
   
+  console.log(getComments)
+  console.log(comments)
+  console.log(listFavoriteRecipe)
 
   async function addNewComment(newComment)
   {
@@ -47,7 +51,8 @@ const FavoriteRecipeDisplay = (favorite_recipe) => {
         }
       );
         console.log(response.data);
-        setComments([...comments, { text: putComment.text }]);
+        setComments(response.data);
+        fetchComments();
     } catch (error) {
       console.log(error.response.data);
     }
@@ -76,7 +81,8 @@ const FavoriteRecipeDisplay = (favorite_recipe) => {
             Authorization: "Bearer " + token,
         },
         });
-        setComments(response.data);
+        console.log(response.data);
+        setGetComments(response.data);
       } catch (error){
       console.log("fetchComments error", error.response.data)
       }
@@ -117,7 +123,7 @@ const FavoriteRecipeDisplay = (favorite_recipe) => {
       <div><CommentsForm addNewComment={addNewComment} /></div>
         <h1>User Comments</h1>
           <div>
-          {comments && listFavoriteRecipe?.recipe?.id && comments.filter((comment) => comment.recipe && comment.recipe.id && comment.recipe.id === listFavoriteRecipe.recipe.id).map((comment) => {
+          {getComments && listFavoriteRecipe && getComments.filter((comment) => comment.recipe && comment.recipe.id && comment.recipe.id === listFavoriteRecipe.recipe.id).map((comment) => {
             return (
             <div key={comment.id}>{comment.text}</div>
             )
