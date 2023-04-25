@@ -24,12 +24,12 @@ const InspirePageDisplay = (props) => {
 
 return (
 
-    <div class="img-gallery">
+    <div className="img-gallery">
         {props.ingredient_search.map((el, index) => {
           return (
             <div className="img-box">
-              <img className="img" key={index} src={el.thumbnail_url} alt={"unavailable"} onClick={() => handleIngredientOnClick(el)} />
-              <h3 className="name">{el.name}</h3><br></br>
+              <img className="img" key={el.id} src={el.thumbnail_url} alt={"unavailable"} onClick={() => handleIngredientOnClick(el)} />
+              <h3 className="name" key={el.index}>{el.name}</h3><br></br>
              
             </div>
           );

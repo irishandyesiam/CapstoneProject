@@ -12,6 +12,7 @@ const SearchBar = (props) => {
         event.preventDefault();
         props.submittedIngredientTerm(ingredient_term)
         navigate("/inspire")
+        setIngredientTerm('');
     }
 
 
