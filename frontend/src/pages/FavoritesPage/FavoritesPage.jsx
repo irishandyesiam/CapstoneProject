@@ -94,7 +94,7 @@ return (
       <div className="img-gallery">
         {favoriteRecipes &&
           favoriteRecipes.map((element) => (
-            <p key={element.id}><br></br>
+            <div key={element.id}><br></br>
             <div className="img-box">
               
               <img
@@ -108,7 +108,7 @@ return (
               
               {/* <p> {recipes.comments} </p>
               <CommentsForm addNewComment={addNewComment} /> */}
-            </p>
+            </div>
           ))}
       </div>
     )

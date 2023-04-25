@@ -16,13 +16,17 @@ const FavoriteRecipeDisplay = (favorite_recipe) => {
   
   useEffect(() => {
     fetchFavorites();
-    addNewComment();
     fetchComments();
   }, []);
   
 
   async function addNewComment(newComment)
   {
+    if (!newComment || !newComment.comments) {
+      console.log('Invalid comment object');
+      return;
+    }
+    
     let comments = newComment.comments;
     let recipe_id = listFavoriteRecipe.recipe.id;
 
@@ -43,6 +47,7 @@ const FavoriteRecipeDisplay = (favorite_recipe) => {
         }
       );
         console.log(response.data);
+        setComments([...comments, { text: putComment.text }]);
     } catch (error) {
       console.log(error.response.data);
     }
@@ -76,18 +81,17 @@ const FavoriteRecipeDisplay = (favorite_recipe) => {
       console.log("fetchComments error", error.response.data)
       }
     } 
-
-  console.log(comments)
-    
-
+  
   function parseIngredients() {
-    let ingredients_list = JSON.parse(listFavoriteRecipe.recipe.ingredients)
-    return ingredients_list
+    if (!listFavoriteRecipe || !listFavoriteRecipe.recipe.ingredients) return []; 
+    let ingredients_list = JSON.parse(listFavoriteRecipe.recipe.ingredients);
+    return ingredients_list;
   }
 
   function recipeInstructionParse() {
-    let instructions_list = JSON.parse(listFavoriteRecipe.recipe.instructions)
-    return instructions_list
+    if (!listFavoriteRecipe || !listFavoriteRecipe.recipe.instructions) return ""; 
+    let instructions_list = JSON.parse(listFavoriteRecipe.recipe.instructions);
+    return instructions_list;
   }
 
   return (
@@ -113,9 +117,9 @@ const FavoriteRecipeDisplay = (favorite_recipe) => {
       <div><CommentsForm addNewComment={addNewComment} /></div>
         <h1>User Comments</h1>
           <div>
-          {comments && comments.filter((comment) => comment.recipe.id === listFavoriteRecipe.recipe.id).map((comment) => {
+          {comments && listFavoriteRecipe && comments.filter((comment) => comment &&comment.recipe.id === listFavoriteRecipe.recipe.id).map((comment) => {
             return (
-            <div key={comment.text}>{comment.text}</div>
+            <div key={comment.id}>{comment.text}</div>
             )
           })}
           </div>

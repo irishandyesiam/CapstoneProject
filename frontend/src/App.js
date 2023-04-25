@@ -41,7 +41,6 @@ function App() {
 
   useEffect(() => {
     getFavoriteRecipes();
-    passedFavoriteId();
   }, [])
 
   async function getFavoriteRecipes(){
@@ -58,9 +57,9 @@ function App() {
     }
   }
 
-  async function passedFavoriteId(fav_recipe){
+  function passedFavoriteId(fav_recipe){
     try{
-    let response = await axios.get(`http://127.0.0.1:8000/api/favorite_recipe/${fav_recipe.id}/`,{
+    let response = axios.get(`http://127.0.0.1:8000/api/favorite_recipe/${fav_recipe.id}/`,{
       headers: {
         Authorization: "Bearer " + token,
       },

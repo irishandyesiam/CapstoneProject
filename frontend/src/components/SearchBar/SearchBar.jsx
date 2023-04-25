@@ -16,7 +16,7 @@ const SearchBar = (props) => {
 
 
     return (
-        <div class="container">
+        <div className="container">
         <form className='searchbar' onSubmit={handleIngredientSubmit}>
                 <input type='text' value={ingredient_term} placeholder="...enter ingredient or dish" onChange={(event) => setIngredientTerm(event.target.value)} />
                 <button type='submit' value="Search">Search</button>
