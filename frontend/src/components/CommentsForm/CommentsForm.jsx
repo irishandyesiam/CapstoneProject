@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 
 const AddComment = (props) => {
 
-const [comment, setComment] = useState([]);
+const [comment, setComment] = useState('');
 
     function handleSubmit(event) {
         event.preventDefault();
@@ -11,6 +11,7 @@ const [comment, setComment] = useState([]);
         };
         props.addNewComment(newComment)
         console.log("input", newComment)
+        setComment('');
     }
 
 return (

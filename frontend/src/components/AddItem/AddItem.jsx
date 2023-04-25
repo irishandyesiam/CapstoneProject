@@ -7,7 +7,7 @@ const AddItem = (props) => {
 
 
 
-const [item, setItem] = useState([]);
+const [item, setItem] = useState('');
 
 
   function handleSubmit(event) {
@@ -16,6 +16,7 @@ const [item, setItem] = useState([]);
         items: item,
     };
     props.addNewItem(newItem)
+    setItem('');
   }
 
 return (
