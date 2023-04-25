@@ -20,13 +20,13 @@ const FavoriteRecipeDisplay = (favorite_recipe) => {
   }, []);
   
 
-  async function addNewComment(newComment)
+  function addNewComment(newComment)
   {
     if (!newComment || !newComment.comments) {
       console.log('Invalid comment object');
       return;
     }
-    
+
     let comments = newComment.comments;
     let recipe_id = listFavoriteRecipe.recipe.id;
 
@@ -37,7 +37,7 @@ const FavoriteRecipeDisplay = (favorite_recipe) => {
     console.log("Post Comment", putComment);
   
     try {
-      let response = await axios.post(
+      let response = axios.post(
         `http://127.0.0.1:8000/api/comment/`,
         putComment,
         {
@@ -117,7 +117,7 @@ const FavoriteRecipeDisplay = (favorite_recipe) => {
       <div><CommentsForm addNewComment={addNewComment} /></div>
         <h1>User Comments</h1>
           <div>
-          {comments && listFavoriteRecipe && comments.filter((comment) => comment &&comment.recipe.id === listFavoriteRecipe.recipe.id).map((comment) => {
+          {comments && listFavoriteRecipe && comments.filter((comment) => comment.recipe.id && comment.recipe.id === listFavoriteRecipe.recipe.id).map((comment) => {
             return (
             <div key={comment.id}>{comment.text}</div>
             )
