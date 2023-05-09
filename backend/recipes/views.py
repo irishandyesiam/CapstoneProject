@@ -6,7 +6,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework import status;
 from django.shortcuts import get_object_or_404
 
-
+# Request for all RECIPE records in Database.
 @api_view(['GET'])
 def recipe_list(request):
     if request.method == 'GET':
@@ -14,6 +14,7 @@ def recipe_list(request):
     serializer = RecipeSerializer(recipes, many=True)
     return Response(serializer.data)
 
+# Requests for USER specific RECIPE records in Database.
 @api_view(['GET', 'POST'])
 @permission_classes([IsAuthenticated])
 def addToRecipeList(request):
@@ -28,6 +29,7 @@ def addToRecipeList(request):
             return Response(serializer.data, status=status.HTTP_202_ACCEPTED) 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+# Request for USER specific RECIPE per PK in Database.
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def recipeDetailsById(request, pk):
