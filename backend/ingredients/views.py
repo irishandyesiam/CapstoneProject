@@ -10,7 +10,7 @@ from django.shortcuts import get_object_or_404
 # Request for Recipe ingredients per FK in model.
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def recipeDetailsByFK(request, fk):
+def ingredientDetailsByFK(request, fk):
     try:
         ingredients = Ingredient.objects.get(recipe_id=fk)  # Replace "foreign_key" with the actual name of the foreign key field
         serializer = IngredientSerializer(ingredients, many=True)
