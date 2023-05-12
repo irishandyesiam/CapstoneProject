@@ -13,6 +13,7 @@ const IngredientRecipeDisplay = (recipe) => {
  
   const [user, token] = useAuth();
  
+  //Adds new recipe to meal_planner
   async function addToMealPlan(recipeId) {
     console.log(recipeId);
     let recipe_meal_plan = {
@@ -38,10 +39,11 @@ const IngredientRecipeDisplay = (recipe) => {
     }
   }
 
+  //Adds new recipe to Database to avoid new calls to 3rd party API.
+  //With new Ingredients table, need to change ingredients_pull to have new object and post to Ingredients table.
   async function addRecipe(add_recipe) {
     console.log(add_recipe);
 
-  
     let name = recipe.passed_ing_recipe.name;
     console.log(name);
     let ingredients_pull = recipe.passed_ing_recipe.sections[0].components.map((el) => {
