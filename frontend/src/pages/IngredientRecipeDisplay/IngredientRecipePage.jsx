@@ -46,6 +46,7 @@ const IngredientRecipeDisplay = (recipe) => {
 
     let name = recipe.passed_ing_recipe.name;
     console.log(name);
+    //Do I create an object here for all the ingredients and then add to the record? Was the table unnessary?
     let ingredients_pull = recipe.passed_ing_recipe.sections[0].components.map((el) => {
       return (el.raw_text)
     });
