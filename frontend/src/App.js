@@ -51,7 +51,7 @@ function App() {
       },
     });
     setRecipes(response.data);
-    console.log(response.data)
+    console.log("getFavoriteRecipes data", response.data)
     } catch(ex){
     console.log(`ERROR in getFavoriteRecipes EXCEPTION: ${ex}`);
     }
@@ -72,7 +72,6 @@ function App() {
   }
 
   async function submittedIngredientTerm(search_term){
-    console.log("Passed ingredient", search_term)
     try{
       let response = await axios.get(`https://tasty.p.rapidapi.com/recipes/list`,{
       params: {from: '0', size: '12', q: `${search_term}`},
@@ -81,16 +80,15 @@ function App() {
         'X-RapidAPI-Host': 'tasty.p.rapidapi.com'
       }
         });
-        console.log(response.data.results)
+        console.log("submittedIngredientTerm results", response.data.results)
         setIngredientSearch(response.data.results);
     } catch(error){
-      console.log(`ERROR in submittedSearchTerm EXCEPTION: ${error}`);
+      console.log(`ERROR in submittedIngredientTerm EXCEPTION: ${error}`);
     }
   }
 
   // Move the 'get-more-info' api request call to BACKEND
   async function passedIdNumber(id_number) {
-    console.log("Hopefully right", id_number);
     let recipe_id = id_number;
     try{
         let response = await axios.get(`https://tasty.p.rapidapi.com/recipes/get-more-info`,{
@@ -100,7 +98,7 @@ function App() {
           'X-RapidAPI-Host': 'tasty.p.rapidapi.com'
         }
           });
-          console.log(response.data)
+          console.log("passedIdNumber data", response.data)
           setPassedIngredientsId(response.data);
       } catch(error){
         console.log(`ERROR in passedIdNumber EXCEPTION: ${error}`);
@@ -115,7 +113,6 @@ function App() {
   // };
 
   function passedIngredientRecipe(ing_recipe){
-    console.log(ing_recipe.id)
     let response = ing_recipe
     setPassedIngredientRecipe(response)
   };

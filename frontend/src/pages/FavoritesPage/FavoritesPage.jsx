@@ -85,7 +85,6 @@ const DisplayFavorites = (props) => {
   let navigate = useNavigate();
 
   function handleFavoriteId(fav_recipe) {
-    console.log("Navigate to favorite recipe display", fav_recipe.id)
     props.passedFavoriteId(fav_recipe)
     navigate('/favorite_recipe_display/')
   }

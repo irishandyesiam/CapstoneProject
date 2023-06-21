@@ -23,7 +23,6 @@ useEffect(() => {
 };
 fetchUserRecipes();}, [token]);
 
-console.log(userRecipes)
 return (
     <div>
     {userRecipes &&

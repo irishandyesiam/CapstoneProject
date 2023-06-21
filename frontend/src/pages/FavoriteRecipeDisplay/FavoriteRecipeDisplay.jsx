@@ -19,10 +19,6 @@ const FavoriteRecipeDisplay = (favorite_recipe) => {
     fetchFavorites();
     fetchComments();
   }, []);
-  
-  console.log(getComments)
-  console.log(comments)
-  console.log(listFavoriteRecipe)
 
   async function addNewComment(newComment)
   {
@@ -50,7 +46,6 @@ const FavoriteRecipeDisplay = (favorite_recipe) => {
           },
         }
       );
-        console.log(response.data);
         setComments(response.data);
         fetchComments();
     } catch (error) {
@@ -62,7 +57,6 @@ const FavoriteRecipeDisplay = (favorite_recipe) => {
 
   async function fetchFavorites(){
     try{
-      console.log("FavoriteRecipeDisplay", fav_rec)
     let response = await axios.get(`http://127.0.0.1:8000/api/favorite_recipe/${fav_rec.id}/`,{
       headers: {
         Authorization: "Bearer " + token,
@@ -81,7 +75,6 @@ const FavoriteRecipeDisplay = (favorite_recipe) => {
             Authorization: "Bearer " + token,
         },
         });
-        console.log(response.data);
         setGetComments(response.data);
       } catch (error){
       console.log("fetchComments error", error.response.data)

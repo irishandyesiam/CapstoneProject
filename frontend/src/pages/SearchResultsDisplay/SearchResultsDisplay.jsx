@@ -3,7 +3,6 @@ import './SearchResultsDisplay.css'
 import { useNavigate } from 'react-router-dom';
 
 const SearchResultsDisplay = (props) => {
-  console.log(props.dish_search);
  
  
   let navigate = useNavigate();
@@ -11,7 +10,6 @@ const SearchResultsDisplay = (props) => {
 
 
   function handleDishOnClick(recipe) {
-    console.log(recipe)
     // What is this doing??
     props.passedDishRecipe(recipe)
     navigate('/display_recipe')

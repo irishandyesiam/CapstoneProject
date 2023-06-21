@@ -10,7 +10,6 @@ const [comment, setComment] = useState('');
             comments: comment,
         };
         props.addNewComment(newComment)
-        console.log("input", newComment)
         setComment('');
     }
 

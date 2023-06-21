@@ -11,7 +11,6 @@ const RecipeDetails = (props) => {
 
 const handleClick = (event) => {
     setToggle(!toggle);
-    console.log("OnClick event data", event)
     setRecipeDetails();
 };
 

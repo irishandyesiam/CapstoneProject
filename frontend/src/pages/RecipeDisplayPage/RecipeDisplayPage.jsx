@@ -11,7 +11,6 @@ const RecipeDisplay = (props) => {
   const [user, token] = useAuth();
 
   async function ingredientsList(recipe) {
-    console.log("Ingredients List", recipe);
      recipe.ingredients.map(async (el) => {
       try {
         let response = await axios.post(
@@ -35,7 +34,6 @@ const RecipeDisplay = (props) => {
   }
 
   async function addToMealPlan(recipeId) {
-    console.log(recipeId);
     let recipe_meal_plan = {
       day_week: "Monday",
       recipe_id: recipeId,
@@ -52,7 +50,7 @@ const RecipeDisplay = (props) => {
         }
       );
       if (response.status === 201) {
-        console.log(recipe_meal_plan);
+        console.log(response.data);
       }
     } catch (error) {
       console.log(error.response.data);
@@ -60,7 +58,6 @@ const RecipeDisplay = (props) => {
   }
 
   async function addRecipe(recipe) {
-    console.log(recipe);
     let name = recipe.name;
     let ingredients = JSON.stringify(recipe.ingredients);
     let instructions = JSON.stringify(recipe.instructions);
@@ -95,7 +92,6 @@ const RecipeDisplay = (props) => {
   }
 
   async function addToFavorites(favorite_recipe) {
-    console.log(favorite_recipe);
     let recipe = favorite_recipe.name;
     // Will need input from customer//
     let rating = 5;

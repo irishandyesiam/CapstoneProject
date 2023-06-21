@@ -30,9 +30,9 @@ const MealPlan = () => {
   }, [token]);
 
     async function addToFavorites(favorite_recipe) {
-      console.log(favorite_recipe);
+      
       let recipe = favorite_recipe.recipe;
-      console.log(recipe)
+      
       // Will need input from customer//
       let rating = 5;
       let comments = "Yum";

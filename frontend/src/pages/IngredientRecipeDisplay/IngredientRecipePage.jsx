@@ -42,25 +42,23 @@ const IngredientRecipeDisplay = (recipe) => {
   //Adds new recipe to Database to avoid new calls to 3rd party API.
   //With new Ingredients table, need to change ingredients_pull to have new object and post to Ingredients table.
   async function addRecipe(add_recipe) {
-    console.log(add_recipe);
-
     let name = recipe.passed_ing_recipe.name;
-    console.log(name);
+
     //Do I create an object here for all the ingredients and then add to the record? Was the table unnessary?
     let ingredients_pull = recipe.passed_ing_recipe.sections[0].components.map((el) => {
       return (el.raw_text)
     });
-    console.log(ingredients_pull);
+
     let ingredients = JSON.stringify(ingredients_pull);
-    console.log(ingredients);
+    
     let instructions_pull = recipe.passed_ing_recipe.instructions.map((e) => {
       return (e.display_text)
     });
-    console.log(instructions_pull);
+    
     let instructions = JSON.stringify(instructions_pull);
-    console.log(instructions);
+    
     let image = recipe.passed_ing_recipe.thumbnail_url;
-    console.log(image);
+    
 
     let revisedRecipe = {
       image: image,
@@ -68,7 +66,7 @@ const IngredientRecipeDisplay = (recipe) => {
       instructions: instructions,
       name: name,
     };
-    console.log(revisedRecipe);
+    
     try {
       let response = await axios.post(
         `http://127.0.0.1:8000/api/recipes/recipe-detail/`,
@@ -82,9 +80,7 @@ const IngredientRecipeDisplay = (recipe) => {
         }
       );
 
-      if (response.status === 202) {
-        console.log(response.data);
-      
+      if (response.status === 202) {    
         addToMealPlan(response.data.id);
       }
     } catch (error) {
@@ -95,11 +91,9 @@ const IngredientRecipeDisplay = (recipe) => {
 
 
   async function ingredientsList(recipe) {
-    console.log("Ingredients List", recipe);
     let x = recipe.sections[0].components.map((el) => {
       return (el.ingredient.name)
     });
-    console.log(x)
     
      x.map(async (el) => {
       try {
@@ -114,9 +108,7 @@ const IngredientRecipeDisplay = (recipe) => {
             },
           }
         );
-        console.log(response);
       } catch (error) {
-        
         console.log(error.response.data);
       }
     });
