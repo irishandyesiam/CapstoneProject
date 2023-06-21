@@ -19,17 +19,28 @@ li {
 .navBar button {
   background-color: #385F71;
   border: 1px solid #F6EEDF;
-  color:#F6EEDF;
-  padding: 0.4rem 0.5rem;
-  font-size: large;
+  color: #F6EEDF;
+  font-size: 1.25rem;
+  font-family: inherit;
+  max-width: 200px;
+  padding: 0.5rem 0.5rem;
+  border-radius: 20px;
+  transition-duration: 0.4s;
+  text-shadow: 
+		1px -1px 0 #071013,
+		1px 1px 0 #071013;
 
 }
 
 .navBar button:hover {
   background-color: #2E4162;
+  cursor: pointer;
   color: #F6EEDF;
   border: 1px solid #071013;
-  cursor: pointer;
+  box-shadow: 10px 2px 4px -4px #2B4162;
+  text-shadow: 
+		1px -1px 0 #071013,
+		1px 1px 0 #071013;
 }
 
 .brand {
